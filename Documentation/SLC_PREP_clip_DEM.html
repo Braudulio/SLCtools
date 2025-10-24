@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+<head>
+<meta name="qrichtext" content="1">
+<style type="text/css">
+h1 { color:#2E74B5;}
+h2 { color:#2E74B5;}
+h3 { color:#d55000;}
+</style>
+</head>
+<body style=" font-family:'Calibri'; font-size:11pt; font-weight:400; font-style:normal; width:50%;">
+<h1>PREP clip DEM</h1>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+Clip DEM raster to specified depths.
+</p>
+<h2>Input parameters</h2>
+<h3>DEM</h3>
+<p>Input DEM</p>
+
+<h3>DEM Label [Optional]</h3>
+<p>Label for output directory <em>i.e.</em> PREP_[DEM Label].
+</p>
+<p>If left blank clipped DEM raster dataset is output to origin directory.
+</p>
+
+<h3>Shallow cutoff value (m)</h3>
+<p>Shallowest depth to clip to as a positive number.
+</p>
+
+<h3>Deepest cutoff value (m) [Optional]</h3>
+<p>Deepest depth to clip to as a positive number. If left blank maximum depth in existing DEM is used.
+</p>
+<h2>Outputs</h2>
+<p>A clipped GeoTIFF named <em>DEM_[ShallowDepth]m_[DeepDepth]m</em> (<em>i.e. DEM_20m_59m.tif for a DEM clipped below 20m with a maximum depth of 59m</em>) is output.</p>
+
+<!--
+<h2>Examples</h2>
+-->
+
+<br>
+<p align="right">Algorithm version: V1.0</p>
+<p align="right">Last Modified: 15-Oct-2025</p>
+<!--
+<p align="right">Algorithm author: Bradley D Morris</p><p align="right">Help author: Bradley D Morris</p><p align="right">Algorithm version: V1.0</p>
+-->
+</body>
+</html>
