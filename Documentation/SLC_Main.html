@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+<head>
+<meta name="qrichtext" content="1">
+<style type="text/css">
+	h1 { color:#2E74B5;}
+	h2 { color:#2E74B5;}
+	h3 { color:#d55000;}
+
+	a { color:#005fce; text-decoration:none; }
+
+	.pad {
+	padding-bottom: 6cm;
+	}
+</style>
+</head>
+<body style=" font-family:'Calibri'; font-size:11pt; font-weight:400; font-style:normal; width:50%;">
+<h1>Main Tools</h1>
+<ul>
+	<li><a href="#land01">LANDFORMS 01 terrain variables</a></li>
+	<!--<li><a href="#RtnName">Routine Name</a></li>-->
+</ul>
+<br>
+<h1 id="land01">LANDFORMS 01 terrain variables</h1>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+This tool generates the four key variables required to perform the surface elements classification: slope, ruggedness (vrm), finescale and broadscale bathymetric position index (BPI).
+</p>
+<p>Slope calculates the gradient change of the surface in degrees. Slope is calculated using the QGIS native 'Slope' tool.
+</p>
+<p>Ruggedness (vrm) calculates the variation of a surface as a representation of roughness, with output values ranging from 0 (no variation) to 1 (complete variation). Ruggedness is calculated using the <b>SAGA 'Vector Ruggedness Measure (VRM)'</b> tool and uses a 'square' search mode with radius 1.
+</p>
+<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas.
+BPI is calculated using the methedology from the 'Slope Position' tool in the Geomorphometry and Gradient Metrics v2.0 toolbox (Evans et al. 2014) and is calculated at user-defined broad and fine scales. Broadscale BPI uses a higher value for the window size, while finescale BPI uses a lower value for the window size.
+</p>
+<p style="font-weight:bold">Default values for the BPI window sizes are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
+</p>
+<p>This tool is intended for users to explore the terrain variables and determine suitable threshold settings.
+</p>
+<p><em>Evans, J., Oakleaf, J., Cushman, S., 2014. An ArcGIS Toolbox for Surface Gradient and Geomorphometric Modeling, Version 2.0-0. Available online: <a href="https://github.com/jeffreyevans/GradientMetrics" target="_blank">https://github.com/jeffreyevans/GradientMetrics</a></em>
+</p>
+
+<h2>Input parameters</h2>
+<h3>DEM</h3>
+<p>Input raster dataset (DEM) as a GeoTIFF</p>
+
+<h3>BroadBPI Window Size</h3>
+<p>Window size for Broadscale BPI calculation</p>
+
+<h3>FineBPI Window Size</h3>
+<p>Window size for Finescale BPI calculation</p>
+
+<h2>Outputs</h2>
+<p>Outputs GeoTIFF rasters to <em>../Working/</em> for slope, vrm, broadbpi and finebpi.
+</p>
+
+<!--
+<h2>Examples</h2>
+-->
+<br>
+<p align="right">Algorithm version: V1.1</p>
+<p align="right">Last Modified: 12-Nov-2025</p>
+
+
+<br>
+<!--
+<h1 id="RtnName">Routine Name</h1>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+Description of routine.
+</p>
+
+<h2>Input parameters</h2>
+<h3>Input 1</h3>
+<p>Description of Input 1</p>
+
+<h2>Outputs</h2>
+<h3>Output 1</h3>
+<p>Description of output 1</p>
+
+<br>
+<p align="right">Algorithm version: V1.0</p>
+<p align="right">Last Modified: 15-Oct-2025</p>
+-->
+<p class="pad"></p>
+<p class="pad"></p>
+
+</body>
+</html>
