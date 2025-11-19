@@ -18,7 +18,9 @@
 <h1>Preparation Tools</h1>
 <ul>
 	<li><a href="#PREPclipDEM">PREP clip DEM</a></li>
-	<li><a href="#RtnName">Routine Name</a></li>
+	<li><a href="#PREPmakeDEM">PREP make DEM from xyz</a></li>
+	<li><a href="#PREPsmoothDEM">PREP smooth DEM</a></li>
+	<!--<li><a href="#RtnName">Routine Name</a></li>-->
 </ul>
 <br>
 <h1 id="PREPclipDEM">PREP clip DEM</h1>
@@ -27,7 +29,7 @@ Clip DEM raster to specified depths.
 </p>
 <h2>Input parameters</h2>
 <h3>DEM</h3>
-<p>Input raster dataset (DEM) as a GeoTIFF</p>
+<p>Input DEM</p>
 
 <h3>DEM Label [Optional]</h3>
 <p>Label for output directory <em>i.e.</em> PREP_[DEM Label].
@@ -56,6 +58,75 @@ Clip DEM raster to specified depths.
 <p align="right">Algorithm author: Bradley D Morris</p><p align="right">Help author: Bradley D Morris</p><p align="right">Algorithm version: V1.0</p>
 -->
 <br>
+<h1 id="PREPmakeDEM">PREP make DEM from xyz</h1>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+Converts xyz data to GeoTIFF raster.
+</p>
+
+<h2>Input parameters</h2>
+<h3>Depth (xyz)</h3>
+<p>Input file with depths as xyz.</p>
+
+<h3>DEM Label</h3>
+<p>Label for output DEM and location <em>i.e. test</em>.
+</p>
+
+<h3>Convert Depths</h3>
+<p>Check box to convert postive depths in xyz file to negative (default is yes). <em>i.e.</em> xyz output from <em>HYPACK<em>.
+</p>
+
+<h2>Outputs</h2>
+<p>A GeoTIFF named <em>DEM_[DEM Label]</em> is written to a directory called <em>PREP_[DEM Label]</em> in the project directory.</p>
+
+<!--
+<br>
+<h2>Examples</h2>
+-->
+
+<br>
+<p align="right">Algorithm version: V1.1</p>
+<p align="right">Last Modified: 19-Nov-2025</p>
+<!--
+<p align="right">Algorithm author: Bradley D Morris</p><p align="right">Help author: Bradley D Morris</p><p align="right">Algorithm version: V1.0</p>
+-->
+<br>
+<h1 id="PREPsmoothDEM">PREP smooth DEM</h1>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+Iteratively smooth DEM raster dataset.
+</p>
+<p style="font-weight:bold">NOTE: This tool uses the WhiteboxTools - MedianFilter
+</p>
+
+<h2>Input parameters</h2>
+<h3>DEM</h3>
+<p>Input raster dataset (DEM) as a GeoTIFF</p>
+
+<h3>DEM Label</h3>
+<p>Label for output directory <em>i.e.</em> PREP_[DEM Label].
+</p>
+<p>If left blank smoothed DEM raster dataset is output to origin directory.
+</p>
+
+<h3>Number of Iterations</h3>
+<p>Number of iterations to smooth over (<em>i.e.</em> 3).
+</p>
+
+<h2>Outputs</h2>
+<p>A smoothed GeoTIFF named <em>DEM_s[Number of iterations]</em> (<em>i.e. DEM_s3.tif for 3 iterations</em>) is output.</p>
+
+<!--
+<br>
+<h2>Examples</h2>
+-->
+
+<br>
+<p align="right">Algorithm version: V1.1</p>
+<p align="right">Last Modified: 19-Nov-2025</p>
+<!--
+<p align="right">Algorithm author: Bradley D Morris</p><p align="right">Help author: Bradley D Morris</p><p align="right">Algorithm version: V1.0</p>
+-->
+<br>
+<!--
 <h1 id="RtnName">Routine Name</h1>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
 Description of routine.
@@ -69,21 +140,12 @@ Description of routine.
 <h3>Output 1</h3>
 <p>Description of output 1</p>
 
-<!--
-<h2>Examples</h2>
--->
-
 <br>
-<p align="right">Algorithm version: V1.1</p>
-<p align="right">Last Modified: 19-Nov-2025</p>
-<!--
-<p align="right">Algorithm author: Bradley D Morris</p><p align="right">Help author: Bradley D Morris</p><p align="right">Algorithm version: V1.0</p>
+<p align="right">Algorithm version: V1.0</p>
+<p align="right">Last Modified: 15-Oct-2025</p>
 -->
-
 <p class="pad"></p>
 <p class="pad"></p>
 
 </body>
-
 </html>
-
