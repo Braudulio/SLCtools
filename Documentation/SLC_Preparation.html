@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+<head>
+<meta name="qrichtext" content="1">
+<style type="text/css">
+	body { font-family:'Calibri';
+	font-size:11pt;
+	font-weight:400;
+	font-style:normal;
+	width:75%;
+	}
+
+	h1 { color:#2E74B5; padding-top: 60px;}
+	h2 { color:#2E74B5;}
+	h3 { color:#d55000;}
+
+	a { color:#005fce; text-decoration:none; }
+
+	.pad {
+	padding-bottom: 6cm;
+	}
+	.title {
+	  height: 60px;
+	  width: 75%;
+	  text-align: center;
+	  background-color: #ffffff;
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	}
+
+	.sidenav {
+	  height: 100%;
+	  width: 180px;
+	  position: fixed;
+	  z-index: 1;
+	  top: 60px;
+	  left: 0;
+	  background-color: #ffffff;
+	  overflow-x: hidden;
+	  padding-top: 20px;
+	  margin-top: 0px;
+	}
+
+	.sidenav a {
+	  padding: 6px 8px 6px 16px;
+	  text-decoration: none;
+	  font-size: 18px;
+	  color: #005fce;
+	  display: block;
+	}
+
+	.sidenav a:hover {
+	  color: #8eb8fa;
+	}
+
+	.main {
+	  margin-left: 180px; /* Same as the width of the sidenav */
+	  font-size: 16px; /* Increased text to enable scrolling */
+	  padding: 0px 10px;
+	}
+</style>
+</head>
+<body>
+<div class="title">
+<h1 style="padding-top: 0px">Seabed Landforms Classification Toolset</h1>
+</div>
+<div class="sidenav">
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Intro.html" style="font-size: 20px">Introduction</a>
+<h2>Preparation Tools</h2>
+<a href="#PREPclipDEM">PREP clip DEM</a>
+<a href="#PREPmakeDEM">PREP make DEM from xyz</a>
+<a href="#PREPsmoothDEM">PREP smooth DEM</a>
+<h2>Main Tools</h2>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land01">LANDFORMS 01 terrain variables</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land02">LANDFORMS 02 surface elements</a>
+</div>
+<div class="main">
+<h1 style="padding-top: 60px" id="PREPclipDEM">PREP clip DEM</h1>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+Clip DEM raster to specified depths.
+</p>
+<h2>Input parameters</h2>
+<h3>DEM</h3>
+<p>Input DEM</p>
+
+<h3>DEM Label [Optional]</h3>
+<p>Label for output directory <em>i.e.</em> PREP_[DEM Label].
+</p>
+<p>If left blank clipped DEM raster dataset is output to origin directory.
+</p>
+
+<h3>Shallow cutoff value (m)</h3>
+<p>Shallowest depth to clip to as a positive number.
+</p>
+
+<h3>Deepest cutoff value (m) [Optional]</h3>
+<p>Deepest depth to clip to as a positive number. If left blank maximum depth in existing DEM is used.
+</p>
+<h2>Outputs</h2>
+<p>A clipped GeoTIFF named <em>DEM_[ShallowDepth]m_[DeepDepth]m</em> (<em>i.e. DEM_20m_59m.tif for a DEM clipped below 20m with a maximum depth of 59m</em>) is output.</p>
+
+<!--
+<h2>Examples</h2>
+-->
+
+<br>
+<p align="right">Algorithm version: V1.0</p>
+<p align="right">Last Modified: 15-Oct-2025</p>
+<!--
+<p align="right">Algorithm author: Bradley D Morris</p><p align="right">Help author: Bradley D Morris</p><p align="right">Algorithm version: V1.0</p>
+-->
+<br>
+<h1 id="PREPmakeDEM">PREP make DEM from xyz</h1>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+Converts xyz data to GeoTIFF raster.
+</p>
+
+<h2>Input parameters</h2>
+<h3>Depth (xyz)</h3>
+<p>Input file with depths as xyz.</p>
+
+<h3>DEM Label</h3>
+<p>Label for output DEM and location <em>i.e. test</em>.
+</p>
+
+<h3>Convert Depths</h3>
+<p>Check box to convert postive depths in xyz file to negative (default is yes). <em>i.e.</em> xyz output from <em>HYPACK</em>.
+</p>
+
+<h2>Outputs</h2>
+<p>A GeoTIFF named <em>DEM_[DEM Label]</em> is written to a directory called <em>PREP_[DEM Label]</em> in the project directory.</p>
+
+<!--
+<br>
+<h2>Examples</h2>
+-->
+
+<br>
+<p align="right">Algorithm version: V1.1</p>
+<p align="right">Last Modified: 19-Nov-2025</p>
+<!--
+<p align="right">Algorithm author: Bradley D Morris</p><p align="right">Help author: Bradley D Morris</p><p align="right">Algorithm version: V1.0</p>
+-->
+<br>
+<h1 id="PREPsmoothDEM">PREP smooth DEM</h1>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+Iteratively smooth DEM raster dataset.
+</p>
+<p style="font-weight:bold">NOTE: This tool uses the WhiteboxTools - MedianFilter
+</p>
+
+<h2>Input parameters</h2>
+<h3>DEM</h3>
+<p>Input raster dataset (DEM) as a GeoTIFF</p>
+
+<h3>DEM Label</h3>
+<p>Label for output directory <em>i.e.</em> PREP_[DEM Label].
+</p>
+<p>If left blank smoothed DEM raster dataset is output to origin directory.
+</p>
+
+<h3>Number of Iterations</h3>
+<p>Number of iterations to smooth over (<em>i.e.</em> 3).
+</p>
+
+<h2>Outputs</h2>
+<p>A smoothed GeoTIFF named <em>DEM_s[Number of iterations]</em> (<em>i.e. DEM_s3.tif for 3 iterations</em>) is output.</p>
+
+<!--
+<br>
+<h2>Examples</h2>
+-->
+
+<br>
+<p align="right">Algorithm version: V1.1</p>
+<p align="right">Last Modified: 19-Nov-2025</p>
+<!--
+<p align="right">Algorithm author: Bradley D Morris</p><p align="right">Help author: Bradley D Morris</p><p align="right">Algorithm version: V1.0</p>
+-->
+<br>
+<!--
+<h1 id="RtnName">Routine Name</h1>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+Description of routine.
+</p>
+
+<h2>Input parameters</h2>
+<h3>Input 1</h3>
+<p>Description of Input 1</p>
+
+<h2>Outputs</h2>
+<h3>Output 1</h3>
+<p>Description of output 1</p>
+
+<br>
+<p align="right">Algorithm version: V1.0</p>
+<p align="right">Last Modified: 15-Oct-2025</p>
+-->
+<p class="pad"></p>
+<p class="pad"></p>
+</div>
+</body>
+</html>
