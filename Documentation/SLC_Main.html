@@ -3,24 +3,82 @@
 <head>
 <meta name="qrichtext" content="1">
 <style type="text/css">
-	h1 { color:#2E74B5;}
+	body { font-family:'Calibri';
+	font-size:11pt;
+	font-weight:400;
+	font-style:normal;
+	width:75%;
+	}
+
+	h1 { color:#2E74B5; padding-top: 60px;}
 	h2 { color:#2E74B5;}
 	h3 { color:#d55000;}
 
 	a { color:#005fce; text-decoration:none; }
 
 	.pad {
-	padding-bottom: 6cm;
+	  padding-bottom: 6cm;
+	}
+
+	.title {
+	  height: 60px;
+	  width: 75%;
+	  text-align: center;
+	  background-color: #ffffff;
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	}
+
+	.sidenav {
+	  height: 100%;
+	  width: 180px;
+	  position: fixed;
+	  z-index: 1;
+	  top: 60px;
+	  left: 0;
+	  background-color: #ffffff;
+	  overflow-x: hidden;
+	  padding-top: 20px;
+	  margin-top: 0px;
+	}
+
+	.sidenav a {
+	  padding: 6px 8px 6px 16px;
+	  text-decoration: none;
+	  font-size: 18px;
+	  color: #005fce;
+	  display: block;
+	}
+
+	.sidenav a:hover {
+	  color: #8eb8fa;
+	}
+
+	.main {
+	  margin-left: 180px; /* Same as the width of the sidenav */
+	  font-size: 16px; /* Increased text to enable scrolling */
+	  padding: 60px 10px;
 	}
 </style>
 </head>
-<body style=" font-family:'Calibri'; font-size:11pt; font-weight:400; font-style:normal; width:50%;">
-<h1>Main Tools</h1>
-<ul>
-	<li><a href="#land01">LANDFORMS 01 terrain variables</a></li>
-	<!--<li><a href="#RtnName">Routine Name</a></li>-->
-</ul>
-<br>
+<body>
+<div class="title">
+<h1 style="padding-top: 0px">Seabed Landforms Classification Toolset</h1>
+</div>
+
+<div class="sidenav">
+<a href="SLC_intro.html" style="font-size: 20px">Introduction</a>
+<h2>Preparation Tools</h2>
+<a href="SLC_Preparation.html#PREPclipDEM">PREP clip DEM</a>
+<a href="#PREPmakeDEM">PREP make DEM from xyz</a>
+<a href="#PREPsmoothDEM">PREP smooth DEM</a>
+<h2>Main Tools</h2>
+<a href="#land01">LANDFORMS 01 terrain variables</a>
+<a href="#land02">LANDFORMS 02 surface elements</a>
+<!--<li><a href="#RtnName">Routine Name</a></li>-->
+</div>
+<div class="main">
 <h1 id="land01">LANDFORMS 01 terrain variables</h1>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
 This tool generates the four key variables required to perform the surface elements classification: slope, ruggedness (vrm), finescale and broadscale bathymetric position index (BPI).
@@ -30,7 +88,7 @@ This tool generates the four key variables required to perform the surface eleme
 <p>Ruggedness (vrm) calculates the variation of a surface as a representation of roughness, with output values ranging from 0 (no variation) to 1 (complete variation). Ruggedness is calculated using the <b>SAGA 'Vector Ruggedness Measure (VRM)'</b> tool and uses a 'square' search mode with radius 1.
 </p>
 <p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas.
-BPI is calculated using the methedology from the 'Slope Position' tool in the Geomorphometry and Gradient Metrics v2.0 toolbox (Evans et al. 2014) and is calculated at user-defined broad and fine scales. Broadscale BPI uses a higher value for the window size, while finescale BPI uses a lower value for the window size.
+BPI is calculated using the methodology from the 'Slope Position' tool in the Geomorphometry and Gradient Metrics v2.0 toolbox (Evans et al. 2014) and is calculated at user-defined broad and fine scales. Broadscale BPI uses a higher value for the window size, while finescale BPI uses a lower value for the window size.
 </p>
 <p style="font-weight:bold">Default values for the BPI window sizes are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
 </p>
@@ -62,6 +120,7 @@ BPI is calculated using the methedology from the 'Slope Position' tool in the Ge
 
 
 <br>
+<h1 id="land02">LANDFORMS 02 surface elements</h1>
 <!--
 <h1 id="RtnName">Routine Name</h1>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
@@ -82,6 +141,6 @@ Description of routine.
 -->
 <p class="pad"></p>
 <p class="pad"></p>
-
+<div>
 </body>
 </html>
