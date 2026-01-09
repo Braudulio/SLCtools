@@ -69,6 +69,7 @@
 <a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Intro.html" style="font-size: 20px">Introduction</a>
 <h2>Preparation Tools</h2>
 <a href="#PREPclipDEM">PREP clip DEM</a>
+<a href="#PREPfixDEM">PREP fix DEM NaN</a>
 <a href="#PREPmakeDEM">PREP make DEM from xyz</a>
 <a href="#PREPsmoothDEM">PREP smooth DEM</a>
 <h2>Main Tools</h2>
@@ -86,7 +87,7 @@ Clip DEM raster to specified depths.
 </p>
 <h2>Input parameters</h2>
 <h3>DEM</h3>
-<p>Input DEM</p>
+<p>Input raster dataset (DEM) as a GeoTIFF</p>
 
 <h3>DEM Label [Optional]</h3>
 <p>Label for output directory <em>i.e.</em> PREP_[DEM Label].
@@ -114,6 +115,29 @@ Clip DEM raster to specified depths.
 <!--
 <p align="right">Algorithm author: Bradley D Morris</p><p align="right">Help author: Bradley D Morris</p><p align="right">Algorithm version: V1.0</p>
 -->
+<br>
+<h1 style="padding-top: 60px" id="PREPfixDEM">PREP fix DEM NaN</h1>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
+Replace 'nan' nodatavalue in a DEM raster dataset with -9999.
+</p>
+<p style="font-weight:bold">NOTE: This tool uses the WhiteboxTools - SetNodataValue
+</p>
+
+<h2>Input parameters</h2>
+<h3>DEM</h3>
+<p>Input raster dataset (DEM) as a GeoTIFF</p>
+
+<h2>Outputs</h2>
+<p>A user named GeoTIFF is output with 'nan' replaced.</p>
+
+<!--
+<br>
+<h2>Examples</h2>
+-->
+
+<br>
+<p align="right">Algorithm version: V1.1</p>
+<p align="right">Last Modified: 08-Dec-2025</p>
 <br>
 <h1 id="PREPmakeDEM">PREP make DEM from xyz</h1>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
