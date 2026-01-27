@@ -60,6 +60,24 @@
 	  font-size: 16px; /* Increased text to enable scrolling */
 	  padding: 60px 10px;
 	}
+
+	figure {
+	  text-align: center;
+	}
+
+	figcaption {
+	  text-align: center;
+	}
+
+	table, th, td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	}
+
+	tbody > tr:last-child > td,
+	tbody > tr:last-child > th {
+	  border-bottom: 0;
+	}
 </style>
 </head>
 <body>
@@ -81,6 +99,8 @@
 <a href="#land04">LANDFORMS 04 final landforms</a>
 <a href="#land05">LANDFORMS 05 plain landforms</a>
 <a href="#land06">LANDFORMS depth reclassification</a>
+<p style="padding-bottom: 6px;"></p>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_References.html" style="font-size: 20px">References</a>
 <!--<li><a href="#RtnName">Routine Name</a></li>-->
 </div>
 <div class="main">
@@ -88,17 +108,15 @@
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
 This tool generates the four key variables required to perform the surface elements classification: slope, ruggedness (vrm), finescale and broadscale bathymetric position index (BPI).
 </p>
-<p>Slope calculates the gradient change of the surface in degrees. Slope is calculated using the QGIS GDAL 'Slope' tool.
+<p>Slope calculates the gradient change of the surface in degrees. Slope is calculated using the <b>QGIS GDAL 'Slope'</b> tool (GDAL/OGR Contributors, 2025).
 </p>
-<p>Ruggedness (vrm) calculates the variation of a surface as a representation of roughness, with output values ranging from 0 (no variation) to 1 (complete variation). Ruggedness is calculated using the <b>SAGA 'Vector Ruggedness Measure (VRM)'</b> tool and uses a 'square' search mode with radius 1.
+<p>Ruggedness (vrm) calculates the variation of a surface as a representation of roughness, with output values ranging from 0 (no variation) to 1 (complete variation). Ruggedness is calculated using the <b>SAGA 'Vector Ruggedness Measure (VRM)'</b> tool (Conrad et al., 2015) and uses a 'square' search mode with radius 1.
 </p>
-<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas. BPI is calculated using the methodology from the 'Slope Position' tool in the Geomorphometry and Gradient Metrics v2.0 toolbox (Evans et al. 2014) and is calculated at user-defined broad and fine scales. Broadscale BPI uses a higher value for the window size, while finescale BPI uses a lower value for the window size.
+<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas. BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox <b>'Slope Position'</b> tool  (Evans et al. 2014) and the <b>WhiteBox Tools ‘Median Filter’</b> tool (Lindsay, 2016). BPI gridsand is are calculated at user-defined broad and fine scales. Broadscale BPI uses a higher value for the window size, while finescale BPI uses a lower value for the window size.
 </p>
-<p style="font-weight:bold">Default values for the BPI window sizes are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold">Default values for the BPI window sizes are based on a 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
 <p>This tool is intended for users to explore the terrain variables and determine suitable threshold settings.
-</p>
-<p style="font-style:italic;">Evans, J., Oakleaf, J., Cushman, S., 2014. An ArcGIS Toolbox for Surface Gradient and Geomorphometric Modeling, Version 2.0-0. Available online: <a href="https://github.com/jeffreyevans/GradientMetrics" target="_blank">https://github.com/jeffreyevans/GradientMetrics</a>
 </p>
 
 <h2>Input parameters</h2>
@@ -114,16 +132,16 @@ This tool generates the four key variables required to perform the surface eleme
 </p>
 <p style="font-style:italic;">For example, a threshold of 150 cells will use a 150 cell-radius (750 m for a 5 m cell DEM) from an individual cell to calculate relative elevation. This 150-cell window will be run across the entire dataset to calculate the relative high, flat and low areas of the dataset at a broad scale.
 </p>
-<p style="font-weight:bold;">Default values are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold;">Default values for the BPI window sizes are based on a 5 m (with no smoothing performed) and are intended as a guide.
 </p>
-<p>Individual datasets should be interrogated to determine the most suitable threshold settings.
+<p style="font-weight:bold;">Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
 <h3>FineBPI Window Size</h3>
 <p>This variable specifies the window size (distance in cells) that is used to calculate finescale BPI.
 </p>
 <p style="font-style:italic;">For example, a threshold of 27 cells will use a 27 cell-radius (135 m for a 5 m cell DEM) from an individual cell to calculate relative elevation. This 27-cell window will be run across the entire dataset to calculate the relative high, flat and low areas of the dataset at a broad scale.
 </p>
-<p style="font-weight:bold;">Default values are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold;">Default values for the BPI window sizes are based on a 5 m (with no smoothing performed) and are intended as a guide.
 </p>
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
@@ -142,18 +160,141 @@ This tool generates the four key variables required to perform the surface eleme
 <h1 id="land02">LANDFORMS 02 surface elements</h1>-->
 <p class="pad"></p>
 <h1 id="land02">LANDFORMS 02 surface elements</h1>
-<center><img src="Images/Surface Elements.png"></center>
+<center>
+<figure>
+	<img src="Images/main_fig01.png" style="width:821px;height:452px;">
+	<figcaption>Figure 1: Surface elements and summarised surface elements generated in LANDFORMS 02 surface elements step</figcaption>
+</figure>
+</center>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-Make surface elements shapefile from DEM
+The surface elements classification breaks up the surface into key components based on ruggedness, slope, finescale and broadscale bathymetric position index (BPI). The user is required to enter classification thresholds for each variable, which forms the resultant surface elements. The approach has been developed to target shelf reef features, which are captured effectively by the ruggedness (VRM) variable.
 </p>
-<p>The surface elements classification breaks up the surface into key components based on ruggedness, slope, finescale and broadscale bathymetric position index (BPI). It characterises the surface into detailed classes of surface texture which may combine one or two reclassified terrain variables.
+<p>The default settings have been determined based on a 5 m cell size raster, with no smoothing performed. Settings should be modified by the user based on the resolution and features of interest within each dataset (see Table 1). The settings applied are recorded as a text file prefixed with 'Current Session'.
 </p>
-<p>For example, 'Broadscale high Rugose' surface element class combines the user-defined 'high' broadscale BPI class and 'rugose' ruggedness class. The 'surface element' labels are defined in the output 'SURF_EL' field.
+<p style="font-style:italic;">Tip: Users may explore different threshold settings by classifying the symbology within the layer's properties.
 </p>
-<p>The surface elements classification outputs 11 classes which represents the full suite of component elements. These are aggregated into 7 classes to create a 'summarised surface elements' layer, which offers a simplified layer for users to interpret features. For example, the 'Broadscale high Rugose' would be aggregated with other rugose 'high' classes to form 'Rugose outcrops'. The 'summarised surface element' labels are defined in the output 'SUM_SE' field.
+
+<p>The surface elements classification characterises the surface into 11 detailed classes of surface texture, which may combine one or two reclassified terrain variables. For example, 'Broadscale high Rugose' surface element class combines the user-defined 'high' broadscale BPI class and 'rugose' ruggedness class. The 'surface element' labels are defined in the output 'SURF_EL' field.
 </p>
-<p>The results of the tool are renamed and transfered to the SURFEL_[<em>Region Label</em>] directory.
+
+<p>The 11 ‘surface element’ classes are then aggregated into 7 classes to create a 'summarised surface elements' layer, which offers a simplified layer for users to interpret features. For example, the 'Broadscale high Rugose' would be aggregated with other rugose 'high' classes to form 'Rugose outcrops'. The 'summarised surface element' labels are defined in the output 'SUM_SE' field.
 </p>
+
+<p>The results of the tool are renamed and transferred to the SURFEL_[<em>Region Label</em>] directory.
+</p>
+
+<!--
+<table style="width:100%">
+-->
+<center>
+<table>
+	<caption>Table 1: Example threshold settings for rasters of varying input resolutions and smoothing iterations</caption>
+	<colgroup>
+		<col style="text-align:center">
+	</colgroup>
+	<tr style="vertical-align:top">
+		<th style="width:80px">Resolution (m)</th>
+		<th style="width:80px">Smoothing</th>
+		<th style="width:80px">Ruggedness Threshold</th>
+		<th style="width:80px">Ruggedness Noise Threshold</th>
+		<th style="width:80px">Finescale BPI Window</th>
+		<th style="width:80px">Finescale BPI Threshold</th>
+		<th style="width:80px">Broadscale BPI Window</th>
+		<th style="width:80px">Broadscale BPI Threshold</th>
+		<th style="width:80px">Slope Threshold (degrees)</th>
+	</tr>
+	<tr style="text-align:center">
+		<td>2</td>
+		<td>-</td>
+		<td>0.0001</td>
+		<td>0.001</td>
+		<td>27</td>
+		<td>-100:100</td>
+		<td>150</td>
+		<td>-100:100</td>
+		<td>10</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>2</td>
+		<td>3</td>
+		<td>0.00008</td>
+		<td>0.0005</td>
+		<td>27</td>
+		<td>-100:100</td>
+		<td>150</td>
+		<td>-100:100</td>
+		<td>10</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>5</td>
+		<td>-</td>
+		<td>0.0001</td>
+		<td>0.002</td>
+		<td>27</td>
+		<td>-100:100</td>
+		<td>150</td>
+		<td>-100:100</td>
+		<td>10</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>5</td>
+		<td>3</td>
+		<td>0.00005</td>
+		<td>0.0003</td>
+		<td>27</td>
+		<td>-100:100</td>
+		<td>150</td>
+		<td>-100:100</td>
+		<td>10</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>10</td>
+		<td>-</td>
+		<td>0.0001</td>
+		<td>0.0003</td>
+		<td>27</td>
+		<td>-100:100</td>
+		<td>150</td>
+		<td>-100:100</td>
+		<td>10</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>10</td>
+		<td>3</td>
+		<td>0.00003</td>
+		<td>0.0002</td>
+		<td>27</td>
+		<td>-100:100</td>
+		<td>150</td>
+		<td>-100:100</td>
+		<td>10</td>
+	</tr>
+
+	<tr style="text-align:center">
+		<td>20</td>
+		<td>-</td>
+		<td>0.00005</td>
+		<td>0.0002</td>
+		<td>27</td>
+		<td>-100:100</td>
+		<td>150</td>
+		<td>-100:100</td>
+		<td>10</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>20</td>
+		<td>3</td>
+		<td>0.00002</td>
+		<td>0.00006</td>
+		<td>27</td>
+		<td>-100:100</td>
+		<td>150</td>
+		<td>-100:100</td>
+		<td>10</td>
+	</tr>
+
+</table>
+</center>
 
 <h2>Input parameters</h2>
 <h3>DEM</h3>
@@ -164,97 +305,123 @@ Make surface elements shapefile from DEM
 </p>
 
 <h3>Slope Threshold</h3>
-<p>Slope calculates the gradient change of the surface in degrees. Here, the user will select a value to define higher slope areas, which will be carried through to the surface elements classification as 'Slope' classes. These classes will ultimately be defined as 'Scarps' in the landform classification.
+<p>Slope calculates the gradient change of the surface in degrees.
 </p>
-<p>User-defined thresholds will reclassify the data into 'slope' (higher slope) classes.
+<p>Slope is calculated using the <b>QGIS GDAL 'Slope'</b> tool (GDAL/ORG Contributors, 2025).
+</p>
+<p>User-defined thresholds will reclassify the data into 'slope' (higher slope) classes. The extent of higher slope areas will be carried through to the surface elements classification as 'Slope' classes. These classes will ultimately be defined as 'Scarps' in the landform classification.
+
+<p style="font-style:italic;">For example, a slope threshold of 10 degrees will reclassify: 1) all values &ge; 10 as 'slope' surface element classes; and 2) all values < 10 degrees as lower slope areas, not defined in the surface elements and landform classifications. All values < 10 degrees are instead defined by other surface element classes (ruggedness, finescale BPI, broadscale BPI).
 </p>
 
-<p style="font-style:italic;">For example, a slope threshold of 10 degrees will reclassify: 1) all values >= 10 as 'slope' surface element classes; and 2)all values < 10 degrees as lower slope areas, not defined in the surface elements and landform classifications. All values < 10 degrees are instead defined by other surface element classes (ruggedness, finescale BPI, broadscale BPI).
-</p>
-
-<p style="font-weight:bold;">Default values are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold;">Default values are based on a 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
 
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
 
-<p>Slope is calculated using the QGIS GDAL 'Slope' tool.
-</p>
+<center>
+<figure>
+	<img src="Images/main_fig02.png" style="width:820px;height:357px;">
+	<figcaption>Figure 2: Slope variable derived from input DEM with example slope threshold values &ge; 10 degrees</figcaption>
+</figure>
+</center>
 
 <h3>Ruggedness Threshold</h3>
-<p>Ruggedness (vrm) calculates the variation of a surface as a representation of roughness, with output values ranging from 0 (no variation) to 1 (complete variation). Here, the user will select a value to define the extent of rugose outcrops, which will be carried through to the surface elements classification as 'Rugose' classes and, for example, may become a 'Reef/Bank' class in the landform classification. Areas below the selected ruggedness value for rugose features will be carried through as 'Smooth' classes in the surface elements classification and, for example, may become a 'Plain' class in the landform classification.
+<p>Ruggedness (vrm) calculates the variation of a surface as a representation of roughness, with output values ranging from 0 (no variation) to 1 (complete variation).
+</p>
+<p>Ruggedness is calculated using the SAGA 'Vector Ruggedness Measure (VRM)' tool (Conrad et al., 2015) and uses a 'square' search mode with radius 1.
+</p>
+<p>A user-defined threshold will reclassify the data into 'rugose' (higher ruggedness) and 'smooth' (lower ruggedness) classes. The extent of rugose outcrops defined will be carried through to the surface elements classification as 'Rugose' classes and, for example, may become a 'Reefs/Banks' class in the landform classification. Areas below the selected ruggedness value for rugose features will be carried through as 'Smooth' classes in the surface elements classification and, for example, may become a 'Plain' class in the landform classification.
 </p>
 
-<p>A user-defined threshold will reclassify the data into 'rugose' (higher ruggedness) and 'smooth' (lower ruggedness) classes.
+<p style="font-style:italic;">For example, a ruggedness threshold of 0.0002 will reclassify: 1) all values &ge; 0.0002 as 'rugose' surface element classes; and 2) values < 0.0002 as 'smooth' surface element classes.
 </p>
 
-<p style="font-style:italic;">For example, a ruggedness threshold of 0.00005 will reclassify: 1) all values >= 0.00005 as 'rugose' surface element classes; and 2) values < 0.00005 as 'smooth' surface element classes.
-</p>
-
-<p style="font-weight:bold;">Default values are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide. Input DEM resolution and smoothing alters the output ruggedness, and threshold values should be adjusted accordingly.
+<p style="font-weight:bold;">Default values are based on a 5 m DEM smoothed (with no smoothing performed) and are intended as a guide. Ruggedness threshold values should be adjusted according to input DEM resolution and smoothing iterations (if applied). See Table 1 for examples.
 </p>
 
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
 
-<p>Ruggedness is calculated using the <b>SAGA 'Vector Ruggedness Measure (VRM)'</b> tool and uses a 'square' search mode with radius 1.
+<p style="font-style:italic;">Tip: When determining the ruggedness threshold, it is important to note that subsequent steps in the classification methodology will identify polygons within a rugose outcrop. If the rugose outcrop edge is adequately captured by the ruggedness threshold, 'gaps' within the outcrop will be identified in later steps as polygons within the outcrop surface. To select a suitable ruggedness threshold, the extent of rugose outcrops captured needs to be balanced with the amount of noise captured, and in turn, manual editing required. Noise correction steps applied in later steps of the landform classification reduce noise within the dataset. See the 'preliminary landforms' section for further information on the noise correction procedure.
 </p>
 
+<center>
+<figure>
+	<img src="Images/main_fig03.png" style="width:820px;height:365px;">
+	<figcaption>Figure 3: Ruggedness variable derived from input DEM with example ruggedness threshold value &ge; 0.0002 (unitless).</figcaption>
+</figure>
+</center>
+
 <h3>BroadBPI Thresholds</h3>
-<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas. Here, the user will select two values to define an upper limit of broadscale BPI, which will create 'Broadscale High' classes within the surface elements classification, and a lower BPI limit of broadscale BPI, which will create 'Broadscale Low' classes. The values in between will be defined as 'Flat' areas. 'Broadscale High' surface elements, for example, may become 'Peak' classes in the landform classification, and 'Broadscale Low' classes, for example, may become 'Depressions and channels' in the landform classification.
+<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas.
+</p>
+
+<p>BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox 'Slope Position' tool (Evans et al., 2014) and the WhiteBox Tools ‘Median Filter’ tool (Lindsay, 2016).
 </p>
 
 <p>Two user-defined thresholds will reclassify the data into 'broadscale low' (negative BPI values), 'flat' (BPI values around zero), and 'broadscale high' (positive BPI values) classes.
 </p>
 
+<p>The upper limit of broadscale BPI, will create 'Broadscale High' classes within the surface elements classification, and the lower BPI limit of broadscale BPI, will create 'Broadscale Low' classes. The values in between will be defined as 'Flat' areas. 'Broadscale High' surface elements, for example, may become 'Peak' classes in the landform classification, and 'Broadscale Low' classes, for example, may become 'Depressions and channels' in the landform classification.
+</p>
+
 <p style="font-style:italic;">For example, a threshold of -100; 100 will create a reclassified polygon separated into three classes: 1) the lower extent of data values (dataset-dependent) to -100. These larger, negative BPI values as classed as 'broadscale low'; 2) -100 to 100. These data values around zero are classed as 'flat'; 3) 100 to the upper extent of data values (dataset-dependent). These larger, positive BPI values are classed as 'broadscale high'.
 </p>
 
-<p style="font-weight:bold;">Default values are based on a broadscale BPI window size of 150 cells with 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold;">Default values are based on a broadscale BPI window size of 150 cells with 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
 
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
 
-<p>BPI is calculated using the methodology from the 'Slope Position' tool in the Geomorphometry and Gradient Metrics v2.0 toolbox (Evans et al. 2014)
-</p>
-
-<p style="font-style:italic;">Evans, J., Oakleaf, J., Cushman, S., 2014. An ArcGIS Toolbox for Surface Gradient and Geomorphometric Modeling, Version 2.0-0. Available online: <a href="https://github.com/jeffreyevans/GradientMetrics" target="_blank">https://github.com/jeffreyevans/GradientMetrics</a>
-</p>
+<center>
+<figure>
+	<img src="Images/main_fig04.png" style="width:820px;height:361px;">
+	<figcaption>Figure 4: Broadscale BPI variable derived from input DEM, with example BPI threshold values < -100; -100 to 100; and >100.</figcaption>
+</figure>
+</center>
 
 <h3>BroadBPI Window Size</h3>
 <p>This variable specifies the window size (distance in cells) that is used to calculate broadscale BPI.
 </p>
 <p style="font-style:italic;">For example, a threshold of 150 cells will use a 150 cell-radius (750 m for a 5 m cell DEM) from an individual cell to calculate relative elevation. This 150-cell window will be run across the entire dataset to calculate the relative high, flat and low areas of the dataset at a broad scale.
 </p>
-<p style="font-weight:bold;">Default values are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold;">Default values are based on a broadscale BPI window size of 150 cells with 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
 
 <h3>FineBPI Thresholds</h3>
-<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent areas of lower elevation, and values around zero represent flatter areas. Here, the user will select two values to define an upper limit of finescale BPI, which will create 'Finescale High' classes within the surface elements classification, and a lower BPI limit of finescale BPI, which will create 'Finescale Low' classes. The values in between will be defined as 'Flat' areas. 'Finescale High' surface elements, for example, may become 'Peak' classes in the landform classification, and 'Finescale Low' classes, for example, may become 'Depressions and channels' in the landform classification.
+<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent areas of lower elevation, and values around zero represent flatter areas.
 </p>
-<p>Two user-defined thresholds will reclassify the data into 'finescale low' (negative BPI values), 'flat' (BPI values around zero), and 'finescale high' (positive BPI values) classes based on user-defined thresholds.
+
+<p>BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox 'Slope Position' tool (Evans et al., 2014) and the WhiteBox Tools ‘Median Filter’ tool (Lindsay, 2016).
+</p>
+
+<p>The upper limit of finescale BPI, will create 'Finescale High' classes within the surface elements classification, and the lower BPI limit of finescale BPI, will create 'Finescale Low' classes. The values in between will be defined as 'Flat' areas. 'Finescale High' surface elements, for example, may become 'Peak' classes in the landform classification, and 'Finescale Low' classes, for example, may become 'Depressions and channels' in the landform classification.
 </p>
 <p style="font-style:italic;">For example, a threshold of -100; 100 will create a reclassified polygon separated into three classes: 1) the lower extent of data values (dataset-dependent) to -100. These larger, negative BPI values as classed as 'finescale low'; 2) -100 to 100. These data values around zero are classed as 'flat'; 3) 100 to the upper extent of data values (dataset-dependent). These larger, positive BPI values are classed as 'finescale high'.
 </p>
-<p style="font-weight:bold;">Default values are based on a finescale BPI window size of 27 cells with 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold;">Default values are based on a finescale BPI window size of 27 cells with 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
-<p>BPI is calculated using the methodology from the 'Slope Position' tool in the Geomorphometry and Gradient Metrics v2.0 toolbox (Evans et al. 2014)
-</p>
 
-<p style="font-style:italic;">Evans, J., Oakleaf, J., Cushman, S., 2014. An ArcGIS Toolbox for Surface Gradient and Geomorphometric Modeling, Version 2.0-0. Available online: <a href="https://github.com/jeffreyevans/GradientMetrics" target="_blank">https://github.com/jeffreyevans/GradientMetrics</a>
-</p>
+<center>
+<figure>
+	<img src="Images/main_fig05.png" style="width:828px;height:363px;">
+	<figcaption>Figure 5: Finescale BPI variable derived from input DEM, with example BPI threshold values < -100; -100 to 100; and >100.</figcaption>
+</figure>
+</center>
 
 <h3>FineBPI Window Size</h3>
 <p>This variable specifies the window size (distance in cells) that is used to calculate finescale BPI.
 </p>
 <p style="font-style:italic;">For example, a threshold of 27 cells will use a 27 cell-radius (135 m for a 5 m cell DEM) from an individual cell to calculate relative elevation. This 27-cell window will be run across the entire dataset to calculate the relative high, flat and low areas of the dataset at a broad scale.
 </p>
-<p style="font-weight:bold;">Default values are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold;">Default values are based on a 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
@@ -281,13 +448,73 @@ Make surface elements shapefile from DEM
 <p class="pad"></p>
 <h1 id="land03">LANDFORMS 03 prelim landforms</h1>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
-Seabed landforms are defined from the classified surface elements, where multiple surface element classes may be ultimately grouped to form a landform. Landforms represent key features of the seascape, including 'reefs/banks', 'peaks', 'plains', 'scarps', 'depressions and channels'.
+Seabed landforms are defined from the classified surface elements, where multiple surface element classes may be ultimately grouped to form a landform. Landforms represent key features of the seascape, including 'reefs/banks', 'peaks', 'plains', 'scarps', 'depressions and channels'. These classes do not represent the only landforms that may occur within a seascape and are intended to capture the prominent features observed within a continental or island shelf setting.
 </p>
-<p>
-This tool first defines preliminary landforms. The user is required to review and edit these classes before proceeding to finalise the classification.
+<p>The user is required to input the ‘surface elements’ created in LANDFORMS 02 and the associated DEM. A user-defined ruggedness threshold is required which will be used to identify potential ‘noise’ polygons.
 </p>
-<p>
-All classes should be reviewed, however specific classes are flagged with a 'REVIEW' label where they may fall into one of two categories. For example, 'Depressions and channels Rugose REVIEW' may be 'Depressions and channels Rugose' or 'Reefs/Banks'.
+<p>This tool first defines preliminary landforms. The user is required to review and edit these classes before proceeding to finalise the classification.
+</p>
+<p style="font-weight:bold;">All classes should be reviewed, however specific classes are flagged with a 'REVIEW' label where they may fall into one of two categories. For example, 'Depressions and channels Rugose REVIEW' may be 'Depressions and channels Rugose' or 'Reefs/Banks'.
+</p>
+
+<p style="font-style:italic;">Tip: It is recommended the user display the slope grid transparently (e.g. 50%) over the preliminary landforms classification. The input DEM should also be loaded for interrogation.
+</p>
+<center>
+<table>
+	<caption>Table 2: Relationship between surface element and landform terms. Variations in final landform terms may occur at the discretion of the user. BS = Broadscale; FS = Finescale.</caption>
+	<colgroup>
+		<col style="text-align:center">
+	</colgroup>
+	<thead>
+	<tr style="vertical-align:top">
+		<th style="width:180px">Surface Elements</th>
+		<th style="width:180px">Summarised surface elements</th>
+		<th style="width:180px">Preliminary landforms</th>
+		<th style="width:180px">Final landforms</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr style="text-align:center">
+		<td>BS High Rugose</td>
+		<td>Rugose Outcrop Peak</td>
+		<td>Peaks</td>
+		<td>Peaks</td>
+	</tr>
+	<!--
+	<tr>
+		<td colspan=4>* Indicates the final landform class that is attributed without manual editing for "REVIEW" polygons.</td>
+	</tr>
+	-->
+	</tbody>
+</table>
+<p style=" margin-top:0px;">* Indicates the final landform class that is attributed without manual editing for "REVIEW" polygons.
+</p>
+</center>
+
+<p>The 'prelim_landforms' feature class is the preliminary landforms classification output which requires manual review and potential editing by the user. Preliminary landform labels are attributed within the field "PrelimLand". These include: Peaks, Peaks REVIEW, Reefs/Banks, Reefs/Banks REVIEW, Scarps, Depressions and channels Smooth, Depressions and Channels Rugose, Depressions and Channels Rugose REVIEW, and Plains. 'Rugose' and 'Smooth' qualifiers are provided for the depressions and channels. 'Rugose' depressions and channels are considered part of the outcropping reef/bank surface, whereas 'Smooth' depressions and channels are contained by, rather than a part of the outcropping reef/bank surface. Note: the “LAND_2” field is a duplicate of “PrelimLand” in case the user needs to refer back to the original labels when performing edits.
+</p>
+<p>The landform classification approach is flexible to the user's specific terminology of features and users can add landform terms. The toolset provides classified boundaries which can be reviewed and altered by the user to create the final classification. Any new or altered terms applied during the editing of the preliminary landforms layer will be carried across as final landform labels.
+</p>
+<p style="font-style:italic;">Tip: If new landform labels are defined, these will not be visible in the default Symbology associated with the shapefile.
+</p>
+
+<center>
+<figure>
+	<img src="Images/main_fig06.png" style="width:798px;height:720px;">
+	<figcaption>Figure 6: Example landform classifications including the output preliminary landforms classification (unedited), together with examples of required and optional edits to the landform classes.</figcaption>
+</figure>
+</center>
+
+<h4>Required edits:</h4>
+<p>Several classes are labelled with a "REVIEW" suffix, including "Depressions and channels Rugose REVIEW" and "Reefs/Banks REVIEW". They occur when a class may fall into one of two classes (see Table 2). The most likely class is assigned, however visual inspection is required to confirm or relabel the polygon into the appropriate class.
+</p>
+<p>During the procedure to define preliminary landforms, 'noise' polygons are identified in areas where rugose polygons do not overlap with higher ruggedness areas. These polygons require review and potential editing by the user to ensure the full extent of the observed features are captured. The original landform terms are captured within the 'LAND_1' field, and the 'LAND_2' labels can be updated by carrying across these original (‘LAND_1’) labels as required.
+</p>
+
+<h4>Optional edits: </h4>
+<p>The output of the landforms classification creates an aggregated category of "reefs/banks". 'Reefs' represent inferred rock or biogenic reef features, and 'banks' are inferred as soft-sediment features (Table 3). While the landform classification is not intended to map substrates, rock/biogenic reef and soft sediment outcrops can be discernible to users familiar with the seascape (as occurs where features are manually digitised), and in such cases they can be considered distinct landforms. While these features are not separated automatically through the toolbox, users can manually edit the output to separate these features, if desired. This flexibility allows users to adjust the landform output to meet their requirements.
+</p>
+<p>Additional 'Rugose' channel features are captured by the 'Depressions and channels Rugose REVIEW' class. These features can be reviewed and manually edited to be included in the final landform classification if the user desires greater detail of variation across the reef/bank surface. This class can include the reef/bank edge as a rugose 'low' depression/channel. Therefore, to separate the additional rugose channels, the user must manually edit and cut the channel extent from the 'Depressions and channels Rugose REVIEW' polygon. If this editing is not performed, the 'Depressions and channels Rugose REVIEW' classes will be labelled as 'Reefs/Banks' in the subsequent step to finalise landforms. An example of these optional edits are included in Figure 8.
 </p>
 
 <h2>Input parameters</h2>
@@ -302,14 +529,38 @@ All classes should be reviewed, however specific classes are flagged with a 'REV
 </p>
 
 <h3>Ruggedness Threshold</h3>
-<p>This 'noise' ruggedness threshold is used to overlap the 'ruggedness noise threshold' (higher ruggedness) with the rugose outcrops defined in the surface elements classification (lower ruggedness value).</p>
+<p>A user-defined ‘noise’ ruggedness threshold is used to identify potential noise polygons in the data.
+Noise may be erroneous data sourced from the input bathymetry (such as speckled noise in marine lidar data or imagery), or superfluous rugose outcrops. To correct for these additional 'noise' areas, a ‘noise ruggedness threshold’ is used to identify areas of higher ruggedness, which are inferred areas of greater relief and therefore less likely to be noise in the data.
+</p>
+<p>With a user-defined 'noise' ruggedness threshold, processes are implemented to overlap the ‘ruggedness noise threshold’ (higher ruggedness value, e.g. 0.001) with the rugose outcrops defined in the surface elements classification (lower ruggedness value, e.g. 0.0002). Where rugose outcrops overlap with the ruggedness noise threshold, the preliminary landform labels are retained. Where they do not overlap, the polygons are labelled as 'noise'. These 'noise' polygons are to be manually reviewed by the user in later steps to ensure polygons are correctly attributed.
+</p>
+<p>A suitable 'noise' ruggedness threshold can be identified by interrogating the ruggedness layer, and selecting a value which, when overlapped with the ruggedness threshold for rugose outcrops, will retain the most appropriate extent of the rugose outcrop. An example is provided below in Figure 7.
+</p>
+<p style="font-weight:bold;">Default values are based on a 5 m DEM (with no smoothing performed) and are intended as a guide.
+</p>
+<p>Individual datasets should be interrogated to determine the most suitable threshold settings.
+</p>
+
+<center>
+<figure>
+	<img src="Images/main_fig07.png" style="width:550px;height:359px;">
+	<figcaption>Figure 7: Ruggedness variable derived from input DEM, with example ruggedness (VRM) threshold = 0.0002 (unitless) for surface elements classification and ruggedness (VRM) threshold &ge; 0.001 (unitless) for ‘noise’ correction in the preliminary landforms classification.</figcaption>
+</figure>
+</center>
 
 <h2>Outputs</h2>
 <h3>Preliminary Landforms</h3>
 <p>A shapefile (prelim_landforms.shp) containing the preliminary landforms classification is created in <em>../Working/</em> and subsequently renamed and transfered to the PRELIM_[<em>Region Label</em>] directory.
 
 <h3>Auxillary Outputs</h3>
-<ul><li>study_area_Er_all_rug_classes.shp - shapefile containing </li><li>study_area_Er_rug_outcrops.shp - </li><li>surf_elem_D.shp - </li><li>vrm_noise_corr.shp- </li></ul>
+<p>Also outputs 'Intermediate' files to the PRELIM_[<em>Region Label</em>] directory:
+</p>
+<ul>
+	<li>study_area_Er_all_rug_classes.shp - shapefile containing the buffered study area with all rugose classes erased (including 'Depressions and channels - Rugose'). This layer is used to identify polygons within reef outcrops.</li>
+	<li>study_area_Er_rug_outcrops.shp - shapefile containing the buffered study area with rugose outcrop classes erased (excluding 'Depressions and channels - Rugose'). This layer is used to identify polygons within reef outcrops. </li>
+	<li>surf_elem_D.shp - dissolved shapefile of surface elements classification.</li>
+	<li>vrm_noise_corr.shp- shapefile of polygons reclassified from ruggedness variable to flag potential 'noise' polygons.</li>
+</ul>
 
 <!--
 <h2>Examples</h2>
@@ -322,19 +573,72 @@ All classes should be reviewed, however specific classes are flagged with a 'REV
 <p class="pad"></p>
 <!--<h1 id="land04">LANDFORMS 04 final landforms</h1>-->
 <h1 id="land04">LANDFORMS 04 final landforms</h1>
-<center><img src="Images/Final Landforms.png"></center>
+<center>
+<figure>
+	<img src="Images/main_fig08.png" style="width:823px;height:366px;">
+	<figcaption>Figure 8: Example final landforms classification.</figcaption>
+</figure>
+</center>
+
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
 This tool finalises the preliminary landforms into the final landform classification.</p>
-<p>This tool should be performed after manual review has been conducted on the preliminary landform classification. In this tool, 'Preliminary landform' labels ('LAND_2' field) are transferred into final landform labels ('LANDFORM' field).
+<p>This tool should be performed after manual review has been conducted on the preliminary landform classification. In this tool, 'Preliminary landform' labels ('LAND_2' field) are transferred into final landform labels ('LANDFORM' field).Unless the classes have been edited to label otherwise, "Peaks REVIEW" classes will become "Peaks", "Depressions and channels Rugose REVIEW" will become "Reefs/Banks", and "Reef/Banks REVIEW" will become "Reefs/Banks" (see Table 2).
 </p>
 <p>This tool has optional functionality to eliminate small polygons, with a user-defined polygon area.
 </p>
-<p>The results of the tool are renamed and transfered to the directory LANDFORM_[<em>Region Label</em>]. The preliminary landforms shapefile (<em>prelim_landforms.shp</em>) as well as the auxillary outputs from the <a href="#land03">LANDFORMS 03 prelim landforms</a> tool are also transfered to the LANDFORM_[<em>Region Label</em>] directory.
-</p>
+<p style="background-color:yellow">The results of the tool are renamed and transferred to the directory LANDFORM_[<em>Region Label</em>]. The preliminary landforms shapefile input by the user is also transferred to the LANDFORM_[<em>Region Label</em>] directory.</p>
+
+<center>
+<table>
+	<caption>Table 3: Term definitions for seabed landform features.</caption>
+	<colgroup>
+		<col style="text-align:center">
+	</colgroup>
+	<thead>
+	<tr style="vertical-align:top">
+		<th style="width:180px">Landform</th>
+		<th style="width:380px">Definition</th>
+		<th style="width:180px">Source</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr style="text-align:center">
+		<td>Reef</td>
+		<td>A mass of rock or coral which either reaches close to the sea surface or is exposed at low tide, posing a hazard to navigation. Note: In this study, the definition of 'reefs' is extended to also include submerged features</td>
+		<td>International Hydrographic Organization (2019)</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Bank</td>
+		<td>An elevation of the sea floor, often found in water depths less than 200 m</td>
+		<td>Dove et al. (2020)</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Plain</td>
+		<td>Any land with a flat or very slightly undulating surface. A flat, gently sloping or nearly level region of the sea floor, for example, abyssal plain.</td>
+		<td>International Hydrographic Organization (2019)</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Peak</td>
+		<td>A prominent, commonly pointed elevation rising from a larger feature (modified from IHO, 2019)</td>
+		<td>Dove et al. (2020)</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Depression</td>
+		<td>A general term for a closed-contour bathymetric low</td>
+		<td>Dove et al. (2020)</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Scarp</td>
+		<td>The steep face of a hill</td>
+		<td>International Hydrographic Organization (2019)</td>
+	</tr>
+	</tbody>
+</table>
+</center>
 
 <h2>Input parameters</h2>
 <h3>Preliminary Landforms (shapefile)</h3>
-<p>Premlinary landforms shapefile (<em>prelim_landforms.shp</em>), generated by the <a href="#land03">LANDFORMS 03 prelim landforms</a> tool.
+<p>Premlinary landforms shapefile (<em>e.g.</em>prelim_landforms.shp), generated by the <a href="#land03">LANDFORMS 03 prelim landforms</a> tool and stored in ../PRELIM_[<em>Region Label</em>] directory.
 </p>
 
 <h3>Region Label</h3>
@@ -359,16 +663,23 @@ This tool finalises the preliminary landforms into the final landform classifica
 <h1 id="land05">LANDFORMS 05 plain landforms</h1>-->
 <p class="pad"></p>
 <h1 id="land05">LANDFORMS 05 plain landforms</h1>
-<center><img src="Images/Plain landforms.png"></center>
+<center>
+<figure>
+	<img src="Images/main_fig09.png" style="width:718px;height:344px;">
+	<figcaption>Figure 9: Example plain landforms classification.</figcaption>
+</figure>
+</center>
+
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
 Plain landforms are defined using finescale and broadscale BPI, creating classes including Plain High, Plain Low, Localised high, Localised low and Plain flat. This classification intends to capture additional detail across the plain area for users focused on the inferred sedimentary environment.
 </p>
-<p style="background-color: yellow">Where an existing 'Plains DEM' doesn't exist, a plains DEM is extracted from the original DEM using the plain features classified in the final landforms layer from <a href="#land04">LANDFORMS 04 final landforms</a>.
+<p>Where an existing 'Plains DEM' doesn't exist, a plains DEM is extracted from the original DEM using the plain features classified in the final landforms layer from <a href="#land04">LANDFORMS 04 final landforms</a>.
 </p>
-
+<p>The user-defined BPI thresholds and window sizes will reclassify the data into 5 plain landform classes: 'localised low', 'localised high', 'plain low', 'plain flat' and 'plain high'.
+</p>
 <p>This tool has optional functionality to eliminate small polygons, with a user-defined polygon area.
 </p>
-<p style="font-weight:bold">Default values are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold">Default values are based on a 5 m DEM (witn no smoothing performed) and are intended as a guide.
 </p>
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
@@ -377,36 +688,33 @@ Plain landforms are defined using finescale and broadscale BPI, creating classes
 
 <h2>Input parameters</h2>
 <h3>DEM</h3>
-<p style="background-color: yellow">Input raster dataset (DEM) as a GeoTIFF. This can be a 'Plains DEM', <em>i.e.</em> with only areas corresponding to 'plains' features, or the entire DEM that then has the area corresponding to 'plains' features extracted using <em>Final Landforms</em>.</p>
+<p>Input raster dataset (DEM) as a GeoTIFF. This can be a 'Plains DEM', <em>i.e.</em> with only areas corresponding to 'plains' features, or the entire DEM that then has the area corresponding to 'plains' features (defined in the 'LANDFORMS' field) extracted using the <em>Final Landforms</em> polygon.</p>
 
 <h3>Final Landforms [Optional]</h3>
-<p style="background-color: yellow">A shapefile containing the classified final landforms generated by <a href="#land04">LANDFORMS 04 final landforms</a> to be used to extract areas corresponding to 'plains' classification and used as the 'Plains DEM'. If this value is left blank the tool assumes the input <em>DEM</em> is a 'Plains DEM'.
+<p>A shapefile containing the classified final landforms generated by <a href="#land04">LANDFORMS 04 final landforms</a> to be used to extract areas corresponding to 'plains' classification and used as the 'Plains DEM'. If this value is left blank the tool assumes the input <em>DEM</em> is a 'Plains DEM'.
 </p>
 
 <h3>Region Label</h3>
-<p>Name for output directory (PLAIN_[Region Label]) that results will be transfered to <em>i.e. test</em>, that is created if necessary. All transfered results are also renamed with this label as a prefix <em>i.e. test_surf_elem_plain.shp</em>.
+<p>Name for output directory (PLAIN_[Region Label]) that results will be transferred to <em>i.e. test</em>, that is created if necessary. All transferred results are also renamed with this label as a prefix <em>i.e. test_surf_elem_plain.shp</em>.
 </p>
 
 <h3>BroadBPI Thresholds</h3>
-<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas. Here, the user will select two values to define an upper limit of broadscale BPI, which will create 'Broadscale High' classes within the surface elements classification, and a lower BPI limit of broadscale BPI, which will create 'Broadscale Low' classes. The values in between will be defined as 'Flat' areas. 'Broadscale High' surface elements, for example, may become 'Peak' classes in the landform classification, and 'Broadscale Low' classes, for example, may become 'Depressions and channels' in the landform classification.
+<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas.
+</p>
+<p>
+BPI is calculated using the methodology from the 'Slope Position' tool in the Geomorphometry and Gradient Metrics v2.0 toolbox (Evans et al., 2014).
 </p>
 
-<p>Two user-defined thresholds will reclassify the data into 'broadscale low' (negative BPI values), 'flat' (BPI values around zero), and 'broadscale high' (positive BPI values) classes.
+<p>Here, the user will select two values to define an upper limit of broadscale BPI, which will create 'Broadscale High' classes within the plain surface elements classification, and a lower BPI limit of broadscale BPI, which will create 'Broadscale Low' classes. The values in between will be defined as 'Plane' areas. 'Broadscale High' plain surface elements will become 'Broadscale high' classes in the plain landform classification, and 'Broadscale Low' classes will become Broadscale low' classes in the landform classification. 'Plane' areas will form part of the 'Plain flat' classes in the plain landforms classification.
 </p>
 
-<p style="font-style:italic;">For example, a threshold of -60; 60 will create a reclassified polygon separated into three classes: 1) the lower extent of data values (dataset-dependent) to -60. These larger, negative BPI values as classed as 'broadscale low'; 2) -60 to 60. These data values around zero are classed as 'flat'; 3) 60 to the upper extent of data values (dataset-dependent). These larger, positive BPI values are classed as 'broadscale high'.
+<p style="font-style:italic;">For example, a threshold of -60; 60 will create a reclassified polygon separated into three classes: 1) the lower extent of data values (dataset-dependent) to -60. These larger, negative BPI values as classed as 'broadscale low'; 2) -60 to 60. These data values around zero are classed as 'plane'; 3) 60 to the upper extent of data values (dataset-dependent). These larger, positive BPI values are classed as 'broadscale high'.
 </p>
 
-<p style="font-weight:bold;">Default values are based on a broadscale BPI window size of 150 cells with 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold;">Default values are based on a broadscale BPI window size of 150 cells with 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
 
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
-</p>
-
-<p>BPI is calculated using the methodology from the 'Slope Position' tool in the Geomorphometry and Gradient Metrics v2.0 toolbox (Evans et al. 2014)
-</p>
-
-<p style="font-style:italic;">Evans, J., Oakleaf, J., Cushman, S., 2014. An ArcGIS Toolbox for Surface Gradient and Geomorphometric Modeling, Version 2.0-0. Available online: <a href="https://github.com/jeffreyevans/GradientMetrics" target="_blank">https://github.com/jeffreyevans/GradientMetrics</a>
 </p>
 
 <h3>BroadBPI Window Size</h3>
@@ -414,26 +722,23 @@ Plain landforms are defined using finescale and broadscale BPI, creating classes
 </p>
 <p style="font-style:italic;">For example, a threshold of 150 cells will use a 150 cell-radius (750 m for a 5 m cell DEM) from an individual cell to calculate relative elevation. This 150-cell window will be run across the entire dataset to calculate the relative high, flat and low areas of the dataset at a broad scale.
 </p>
-<p style="font-weight:bold;">Default values are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold;">Default values are based on a 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
 
 <h3>FineBPI Thresholds</h3>
-<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent areas of lower elevation, and values around zero represent flatter areas. Here, the user will select two values to define an upper limit of finescale BPI, which will create 'Finescale High' classes within the surface elements classification, and a lower BPI limit of finescale BPI, which will create 'Finescale Low' classes. The values in between will be defined as 'Flat' areas. 'Finescale High' surface elements, for example, may become 'Peak' classes in the landform classification, and 'Finescale Low' classes, for example, may become 'Depressions and channels' in the landform classification.
-</p>
-<p>Two user-defined thresholds will reclassify the data into 'finescale low' (negative BPI values), 'flat' (BPI values around zero), and 'finescale high' (positive BPI values) classes based on user-defined thresholds.
-</p>
-<p style="font-style:italic;">For example, a threshold of -60; 60 will create a reclassified polygon separated into three classes: 1) the lower extent of data values (dataset-dependent) to -60. These larger, negative BPI values as classed as 'finescale low'; 2) -60 to 60. These data values around zero are classed as 'flat'; 3) 60 to the upper extent of data values (dataset-dependent). These larger, positive BPI values are classed as 'finescale high'.
-</p>
-<p style="font-weight:bold;">Default values are based on a finescale BPI window size of 27 cells with 5 m DEM smoothed with x3 iterations and are intended as a guide.
-</p>
-<p>Individual datasets should be interrogated to determine the most suitable threshold settings.
+<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent areas of lower elevation, and values around zero represent flatter areas.
 </p>
 <p>BPI is calculated using the methodology from the 'Slope Position' tool in the Geomorphometry and Gradient Metrics v2.0 toolbox (Evans et al. 2014)
 </p>
-
-<p style="font-style:italic;">Evans, J., Oakleaf, J., Cushman, S., 2014. An ArcGIS Toolbox for Surface Gradient and Geomorphometric Modeling, Version 2.0-0. Available online: <a href="https://github.com/jeffreyevans/GradientMetrics" target="_blank">https://github.com/jeffreyevans/GradientMetrics</a>
+<p>Here, the user will select two values to define an upper limit of finescale BPI, which will create 'Finescale High' classes within the plain surface elements classification, and a lower BPI limit of finescale BPI, which will create 'Finescale Low' classes. The values in between will be defined as 'Plane' areas. 'Finescale High' surface elements, for example, will become 'Localised high' classes in the plain landform classification, and 'Finescale Low' classes, for example, will become 'Localised low' in the landform classification. 'Plane' areas will form part of the 'Plain flat' class in the plain landforms classification.
+</p>
+<p style="font-style:italic;">For example, a threshold of -60; 60 will create a reclassified polygon separated into three classes: 1) the lower extent of data values (dataset-dependent) to -60. These larger, negative BPI values as classed as 'finescale low'; 2) -60 to 60. These data values around zero are classed as 'plane'; 3) 60 to the upper extent of data values (dataset-dependent). These larger, positive BPI values are classed as 'finescale high'.
+</p>
+<p style="font-weight:bold;">Default values are based on a finescale BPI window size of 27 cells with 5 m DEM (with no smoothing performed) and are intended as a guide.
+</p>
+<p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
 
 <h3>FineBPI Window Size</h3>
@@ -441,7 +746,7 @@ Plain landforms are defined using finescale and broadscale BPI, creating classes
 </p>
 <p style="font-style:italic;">For example, a threshold of 27 cells will use a 27 cell-radius (135 m for a 5 m cell DEM) from an individual cell to calculate relative elevation. This 27-cell window will be run across the entire dataset to calculate the relative high, flat and low areas of the dataset at a broad scale.
 </p>
-<p style="font-weight:bold;">Default values are based on a 5 m DEM smoothed with x3 iterations and are intended as a guide.
+<p style="font-weight:bold;">Default values are based on a 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>

@@ -59,6 +59,14 @@
 	  font-size: 16px; /* Increased text to enable scrolling */
 	  padding: 0px 10px;
 	}
+
+	figure {
+	  text-align: center;
+	}
+
+	figcaption {
+	  text-align: center;
+	}
 </style>
 </head>
 <body>
@@ -79,12 +87,28 @@
 <a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land04">LANDFORMS 04 final landforms</a>
 <a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land05">LANDFORMS 05 plain landforms</a>
 <a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land06">LANDFORMS depth reclassification</a>
+<p style="padding-bottom: 6px;"></p>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_References.html" style="font-size: 20px">References</a>
 </div>
 <div class="main">
 <h1 style="padding-top: 60px" id="PREPclipDEM">PREP clip DEM</h1>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
 Clip DEM raster to specified depths.
 </p>
+
+<p>
+An upper and lower elevation value can be set by the user to clip the DEM. The values used to clip the dataset will be added as a suffix to the output dataset, e.g. dem_10 if the dataset was clipped at -10 m elevation. Input values must be positive. The Seabed Landforms Toolset has been developed for open coast, shelf settings and is not designed for land or estuarine environments. It is recommended all DEMs be clipped to 0 m elevation for the upper extent of data to represent bathymetry only, and estuarine environments be excluded unless determined by the user as appropriate (Figure 1).
+</p>
+
+<figure>
+	<img src="Images/prep_fig01.png" style="width:397px;height:246px;">
+	<figcaption>Figure 1: Recommended to clip elevations to within continental/island shelf extent – excluding land areas and steep-gradient changes in elevation that can occur at the shelf break</figcaption>
+</figure>
+
+<p>
+Furthermore, the lower depth extent of the dataset should be considered where there is a large variation in elevation. If the dataset extends beyond the continental or island shelf to include the shelf break, shelf slope and/or abyssal plain, it is strongly recommended the lower extent of elevation be clipped to a depth landward of the shelf break (Figure 1). This is due to the nature of the Bathymetry Position Index (BPI) calculation, which calculates relative height across the DEM (based on user-defined windows). Where a steep change in gradient occurs, such as the drop-off of a shelf break, this will 'flatten' the remaining features on the shelf, and they may appear smaller in relief relative to the prominent drop-off feature. For optimal performance of the classification toolset, it is recommended the user select a depth threshold landward of the shelf break.
+</p>
+
 <h2>Input parameters</h2>
 <h3>DEM</h3>
 <p>Input raster dataset (DEM) as a GeoTIFF</p>
@@ -144,9 +168,14 @@ Replace 'nan' nodatavalue in a DEM raster dataset with -9999.
 Converts xyz data to GeoTIFF raster.
 </p>
 
+<p>
+If the user has the elevation data in an XYZ format, this tool can grid the XYZ data into an GeoTiFF raster format. A co-ordinate system is required to be specified, which should match the known co-originate system of the input XYZ.
+This tool requires the XYZ data to be ordered by the Y variable.
+</p>
+
 <h2>Input parameters</h2>
 <h3>Depth (xyz)</h3>
-<p>Input file with depths as xyz.</p>
+<p>Input file with depths as xyz. Data ordered by Y variable.</p>
 
 <h3>DEM Label</h3>
 <p>Label for output DEM and location <em>i.e. test</em>.
@@ -157,7 +186,7 @@ Converts xyz data to GeoTIFF raster.
 </p>
 
 <h3>Convert Depths</h3>
-<p>Check box to convert postive depths in xyz file to negative (default is no). <em>i.e.</em> xyz output from <em>HYPACK</em>.
+<p>Check box to convert postive depths in xyz file to negative (default is no). <em>i.e.</em> xyz output from <em>HYPACK</em>. Leave unchecked if input xyz depth values are negative.
 </p>
 
 <h2>Outputs</h2>
@@ -180,6 +209,12 @@ Converts xyz data to GeoTIFF raster.
 Iteratively smooth DEM raster dataset.
 </p>
 <p style="font-weight:bold">NOTE: This tool uses the WhiteboxTools - MedianFilter
+</p>
+
+<p>Smoothing can be performed to reduce noise artefacts in the dataset. This is particularly effective with noise within marine lidar or bathymetry datasets derived from satellite imagery which are more likely to have speckled noise.
+</p>
+
+<p>The smoothing function performs a 'Median' filter using the <b>Whitebox Tools plugin</b> within QGIS. Median filters were determined to be most effective as they do not include the extremities of data values as would occur with a 'Mean' calculation. Users can input a smoothing iteration. The number of smoothing iterations is added as a suffix to the output dataset <em>e.g.</em>  dem_s3 if the DEM was smoothed with three iterations.
 </p>
 
 <h2>Input parameters</h2>
