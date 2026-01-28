@@ -112,7 +112,7 @@ This tool generates the four key variables required to perform the surface eleme
 </p>
 <p>Ruggedness (vrm) calculates the variation of a surface as a representation of roughness, with output values ranging from 0 (no variation) to 1 (complete variation). Ruggedness is calculated using the <b>SAGA 'Vector Ruggedness Measure (VRM)'</b> tool (Conrad et al., 2015) and uses a 'square' search mode with radius 1.
 </p>
-<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas. BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox <b>'Slope Position'</b> tool  (Evans et al. 2014) and the <b>WhiteBox Tools ‘Median Filter’</b> tool (Lindsay, 2016). BPI gridsand is are calculated at user-defined broad and fine scales. Broadscale BPI uses a higher value for the window size, while finescale BPI uses a lower value for the window size.
+<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas. BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox <b>'Slope Position'</b> tool (Evans et al. 2014) and the <b>WhiteBox Tools 'Median Filter'</b> tool (Lindsay, 2016). BPI gridsand is are calculated at user-defined broad and fine scales. Broadscale BPI uses a higher value for the window size, while finescale BPI uses a lower value for the window size.
 </p>
 <p style="font-weight:bold">Default values for the BPI window sizes are based on a 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
@@ -177,7 +177,7 @@ The surface elements classification breaks up the surface into key components ba
 <p>The surface elements classification characterises the surface into 11 detailed classes of surface texture, which may combine one or two reclassified terrain variables. For example, 'Broadscale high Rugose' surface element class combines the user-defined 'high' broadscale BPI class and 'rugose' ruggedness class. The 'surface element' labels are defined in the output 'SURF_EL' field.
 </p>
 
-<p>The 11 ‘surface element’ classes are then aggregated into 7 classes to create a 'summarised surface elements' layer, which offers a simplified layer for users to interpret features. For example, the 'Broadscale high Rugose' would be aggregated with other rugose 'high' classes to form 'Rugose outcrops'. The 'summarised surface element' labels are defined in the output 'SUM_SE' field.
+<p>The 11 'surface element' classes are then aggregated into 7 classes to create a 'summarised surface elements' layer, which offers a simplified layer for users to interpret features. For example, the 'Broadscale high Rugose' would be aggregated with other rugose 'high' classes to form 'Rugose outcrops'. The 'summarised surface element' labels are defined in the output 'SUM_SE' field.
 </p>
 
 <p>The results of the tool are renamed and transferred to the SURFEL_[<em>Region Label</em>] directory.
@@ -358,7 +358,7 @@ The surface elements classification breaks up the surface into key components ba
 <p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas.
 </p>
 
-<p>BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox 'Slope Position' tool (Evans et al., 2014) and the WhiteBox Tools ‘Median Filter’ tool (Lindsay, 2016).
+<p>BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox 'Slope Position' tool (Evans et al., 2014) and the WhiteBox Tools 'Median Filter' tool (Lindsay, 2016).
 </p>
 
 <p>Two user-defined thresholds will reclassify the data into 'broadscale low' (negative BPI values), 'flat' (BPI values around zero), and 'broadscale high' (positive BPI values) classes.
@@ -397,7 +397,7 @@ The surface elements classification breaks up the surface into key components ba
 <p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent areas of lower elevation, and values around zero represent flatter areas.
 </p>
 
-<p>BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox 'Slope Position' tool (Evans et al., 2014) and the WhiteBox Tools ‘Median Filter’ tool (Lindsay, 2016).
+<p>BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox 'Slope Position' tool (Evans et al., 2014) and the WhiteBox Tools 'Median Filter' tool (Lindsay, 2016).
 </p>
 
 <p>The upper limit of finescale BPI, will create 'Finescale High' classes within the surface elements classification, and the lower BPI limit of finescale BPI, will create 'Finescale Low' classes. The values in between will be defined as 'Flat' areas. 'Finescale High' surface elements, for example, may become 'Peak' classes in the landform classification, and 'Finescale Low' classes, for example, may become 'Depressions and channels' in the landform classification.
@@ -450,7 +450,7 @@ The surface elements classification breaks up the surface into key components ba
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">
 Seabed landforms are defined from the classified surface elements, where multiple surface element classes may be ultimately grouped to form a landform. Landforms represent key features of the seascape, including 'reefs/banks', 'peaks', 'plains', 'scarps', 'depressions and channels'. These classes do not represent the only landforms that may occur within a seascape and are intended to capture the prominent features observed within a continental or island shelf setting.
 </p>
-<p>The user is required to input the ‘surface elements’ created in LANDFORMS 02 and the associated DEM. A user-defined ruggedness threshold is required which will be used to identify potential ‘noise’ polygons.
+<p>The user is required to input the 'surface elements' created in LANDFORMS 02 and the associated DEM. A user-defined ruggedness threshold is required which will be used to identify potential 'noise' polygons.
 </p>
 <p>This tool first defines preliminary landforms. The user is required to review and edit these classes before proceeding to finalise the classification.
 </p>
@@ -468,7 +468,7 @@ Seabed landforms are defined from the classified surface elements, where multipl
 	<thead>
 	<tr style="vertical-align:top">
 		<th style="width:180px">Surface Elements</th>
-		<th style="width:180px">Summarised surface elements</th>
+		<th style="width:220px">Summarised surface elements</th>
 		<th style="width:180px">Preliminary landforms</th>
 		<th style="width:180px">Final landforms</th>
 	</tr>
@@ -479,6 +479,96 @@ Seabed landforms are defined from the classified surface elements, where multipl
 		<td>Rugose Outcrop Peak</td>
 		<td>Peaks</td>
 		<td>Peaks</td>
+	</tr>
+	<tr style="text-align:center">
+		<td rowspan="2">BS High Smooth</td>
+		<td rowspan="2">Smooth Outcrop</td>
+		<td>Plains</td>
+		<td>Plains</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Peaks</td>
+		<td>Peaks</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>BS Low Rugose</td>
+		<td>Rugose Outcrop</td>
+		<td>Reefs/Banks</td>
+		<td>Reefs/Banks</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>BS Low Smooth</td>
+		<td>Smooth Low</td>
+		<td>Plains</td>
+		<td>Plains</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>FS High Rugose</td>
+		<td>Rugose Outcrop Peak</td>
+		<td>Peaks</td>
+		<td>Peaks</td>
+	</tr>
+	<tr style="text-align:center">
+		<td rowspan="2">FS High Smooth</td>
+		<td rowspan="2">Smooth Outcrop</td>
+		<td>Plains</td>
+		<td>Plains</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Peaks</td>
+		<td>Peaks</td>
+	</tr>
+
+	<tr style="text-align:center">
+		<td rowspan="3">FS Low Rugose</td>
+		<td rowspan="3">Rugose Low</td>
+		<td>Depressions and channels Rugose</td>
+		<td>Depressions and channels Rugose</td>
+	</tr>
+	<tr style="text-align:center">
+		<td rowspan="2">Depressions and channels Rugose REVIEW</td>
+		<td>Depressions and channels Rugose</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Reefs/Banks</td>
+	</tr>
+	<tr style="text-align:center">
+		<td rowspan="2">FS Low Smooth</td>
+		<td rowspan="2">Smooth Low</td>
+		<td>Plains</td>
+		<td>Plains</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Depressions and channels Smooth</td>
+		<td>Depressions and channels Smooth</td>
+	</tr>
+
+	<tr style="text-align:center">
+		<td>Plane Rugose</td>
+		<td>Rugose Outcrop</td>
+		<td>Reefs/Banks</td>
+		<td>Reefs/Banks</td>
+	</tr>
+
+	<tr style="text-align:center">
+		<td rowspan="3">Plane Smooth</td>
+		<td rowspan="3">Smooth Flats</td>
+		<td>Plains</td>
+		<td>Plains</td>
+	</tr>
+	<tr style="text-align:center">
+		<td rowspan="2">Reefs/Banks REVIEW</td>
+		<td>Reefs/Banks</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Depressions and channels Smooth</td>
+	</tr>
+
+	<tr style="text-align:center">
+		<td>Slope</td>
+		<td>Slope</td>
+		<td>Scarp</td>
+		<td>Scarp</td>
 	</tr>
 	<!--
 	<tr>
@@ -491,7 +581,7 @@ Seabed landforms are defined from the classified surface elements, where multipl
 </p>
 </center>
 
-<p>The 'prelim_landforms' feature class is the preliminary landforms classification output which requires manual review and potential editing by the user. Preliminary landform labels are attributed within the field "PrelimLand". These include: Peaks, Peaks REVIEW, Reefs/Banks, Reefs/Banks REVIEW, Scarps, Depressions and channels Smooth, Depressions and Channels Rugose, Depressions and Channels Rugose REVIEW, and Plains. 'Rugose' and 'Smooth' qualifiers are provided for the depressions and channels. 'Rugose' depressions and channels are considered part of the outcropping reef/bank surface, whereas 'Smooth' depressions and channels are contained by, rather than a part of the outcropping reef/bank surface. Note: the “LAND_2” field is a duplicate of “PrelimLand” in case the user needs to refer back to the original labels when performing edits.
+<p>The 'prelim_landforms' feature class is the preliminary landforms classification output which requires manual review and potential editing by the user. Preliminary landform labels are attributed within the field "PrelimLand". These include: Peaks, Peaks REVIEW, Reefs/Banks, Reefs/Banks REVIEW, Scarps, Depressions and channels Smooth, Depressions and Channels Rugose, Depressions and Channels Rugose REVIEW, and Plains. 'Rugose' and 'Smooth' qualifiers are provided for the depressions and channels. 'Rugose' depressions and channels are considered part of the outcropping reef/bank surface, whereas 'Smooth' depressions and channels are contained by, rather than a part of the outcropping reef/bank surface. Note: the 'LAND_2' field is a duplicate of 'PrelimLand' in case the user needs to refer back to the original labels when performing edits.
 </p>
 <p>The landform classification approach is flexible to the user's specific terminology of features and users can add landform terms. The toolset provides classified boundaries which can be reviewed and altered by the user to create the final classification. Any new or altered terms applied during the editing of the preliminary landforms layer will be carried across as final landform labels.
 </p>
@@ -508,7 +598,7 @@ Seabed landforms are defined from the classified surface elements, where multipl
 <h4>Required edits:</h4>
 <p>Several classes are labelled with a "REVIEW" suffix, including "Depressions and channels Rugose REVIEW" and "Reefs/Banks REVIEW". They occur when a class may fall into one of two classes (see Table 2). The most likely class is assigned, however visual inspection is required to confirm or relabel the polygon into the appropriate class.
 </p>
-<p>During the procedure to define preliminary landforms, 'noise' polygons are identified in areas where rugose polygons do not overlap with higher ruggedness areas. These polygons require review and potential editing by the user to ensure the full extent of the observed features are captured. The original landform terms are captured within the 'LAND_1' field, and the 'LAND_2' labels can be updated by carrying across these original (‘LAND_1’) labels as required.
+<p>During the procedure to define preliminary landforms, 'noise' polygons are identified in areas where rugose polygons do not overlap with higher ruggedness areas. These polygons require review and potential editing by the user to ensure the full extent of the observed features are captured. The original landform terms are captured within the 'LAND_1' field, and the 'LAND_2' labels can be updated by carrying across these original ('LAND_1') labels as required.
 </p>
 
 <h4>Optional edits: </h4>
@@ -529,8 +619,8 @@ Seabed landforms are defined from the classified surface elements, where multipl
 </p>
 
 <h3>Ruggedness Threshold</h3>
-<p>A user-defined ‘noise’ ruggedness threshold is used to identify potential noise polygons in the data.
-Noise may be erroneous data sourced from the input bathymetry (such as speckled noise in marine lidar data or imagery), or superfluous rugose outcrops. To correct for these additional 'noise' areas, a ‘noise ruggedness threshold’ is used to identify areas of higher ruggedness, which are inferred areas of greater relief and therefore less likely to be noise in the data.
+<p>A user-defined 'noise' ruggedness threshold is used to identify potential noise polygons in the data.
+Noise may be erroneous data sourced from the input bathymetry (such as speckled noise in marine lidar data or imagery), or superfluous rugose outcrops. To correct for these additional 'noise' areas, a 'noise ruggedness threshold' is used to identify areas of higher ruggedness, which are inferred areas of greater relief and therefore less likely to be noise in the data.
 </p>
 <p>With a user-defined 'noise' ruggedness threshold, processes are implemented to overlap the ‘ruggedness noise threshold’ (higher ruggedness value, e.g. 0.001) with the rugose outcrops defined in the surface elements classification (lower ruggedness value, e.g. 0.0002). Where rugose outcrops overlap with the ruggedness noise threshold, the preliminary landform labels are retained. Where they do not overlap, the polygons are labelled as 'noise'. These 'noise' polygons are to be manually reviewed by the user in later steps to ensure polygons are correctly attributed.
 </p>
@@ -544,7 +634,7 @@ Noise may be erroneous data sourced from the input bathymetry (such as speckled 
 <center>
 <figure>
 	<img src="Images/main_fig07.png" style="width:550px;height:359px;">
-	<figcaption>Figure 7: Ruggedness variable derived from input DEM, with example ruggedness (VRM) threshold = 0.0002 (unitless) for surface elements classification and ruggedness (VRM) threshold &ge; 0.001 (unitless) for ‘noise’ correction in the preliminary landforms classification.</figcaption>
+	<figcaption>Figure 7: Ruggedness variable derived from input DEM, with example ruggedness (VRM) threshold = 0.0002 (unitless) for surface elements classification and ruggedness (VRM) threshold &ge; 0.001 (unitless) for 'noise' correction in the preliminary landforms classification.</figcaption>
 </figure>
 </center>
 
@@ -586,7 +676,9 @@ This tool finalises the preliminary landforms into the final landform classifica
 </p>
 <p>This tool has optional functionality to eliminate small polygons, with a user-defined polygon area.
 </p>
-<p style="background-color:yellow">The results of the tool are renamed and transferred to the directory LANDFORM_[<em>Region Label</em>]. The preliminary landforms shapefile input by the user is also transferred to the LANDFORM_[<em>Region Label</em>] directory.</p>
+<p>The results of the tool are renamed and transferred to the directory LANDFORM_[<em>Region Label</em>].
+</p>
+<!--The preliminary landforms shapefile input by the user is also transferred to the LANDFORM_[<em>Region Label</em>] directory.-->
 
 <center>
 <table>
@@ -624,7 +716,12 @@ This tool finalises the preliminary landforms into the final landform classifica
 	</tr>
 	<tr style="text-align:center">
 		<td>Depression</td>
-		<td>A general term for a closed-contour bathymetric low</td>
+		<td>A general term for a closed-contour bathymetric low<br><br></td>
+		<td>Dove et al. (2020)</td>
+	</tr>
+	<tr style="text-align:center">
+		<td>Channel</td>
+		<td>A general term for an elongated bathymetric low (adapted from IHO, 2019)</td>
 		<td>Dove et al. (2020)</td>
 	</tr>
 	<tr style="text-align:center">
