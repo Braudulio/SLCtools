@@ -112,7 +112,7 @@ This tool generates the four key variables required to perform the surface eleme
 </p>
 <p>Ruggedness (vrm) calculates the variation of a surface as a representation of roughness, with output values ranging from 0 (no variation) to 1 (complete variation). Ruggedness is calculated using the <b>SAGA 'Vector Ruggedness Measure (VRM)'</b> tool (Conrad et al., 2015) and uses a 'square' search mode with radius 1.
 </p>
-<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas. BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox <b>'Slope Position'</b> tool (Evans et al. 2014) and the <b>WhiteBox Tools 'Median Filter'</b> tool (Lindsay, 2016). BPI gridsand is are calculated at user-defined broad and fine scales. Broadscale BPI uses a higher value for the window size, while finescale BPI uses a lower value for the window size.
+<p>Bathymetric Position Index (BPI) calculates relative elevation across a seascape, where large positive values represent higher elevation areas of the dataset, large negative values represent area of lower elevation, and values around zero represent flatter areas. BPI is calculated using the methodology from the Geomorphometry and Gradient Metrics v2.0 toolbox <b>'Slope Position'</b> tool (Evans et al. 2014) and the <b>WhiteBox Tools 'Median Filter'</b> tool (Lindsay, 2016). BPI grids are calculated at user-defined broad and fine scales. Broadscale BPI uses a higher value for the window size, while finescale BPI uses a lower value for the window size.
 </p>
 <p style="font-weight:bold">Default values for the BPI window sizes are based on a 5 m DEM (with no smoothing performed) and are intended as a guide.
 </p>
@@ -622,7 +622,7 @@ Seabed landforms are defined from the classified surface elements, where multipl
 <p>A user-defined 'noise' ruggedness threshold is used to identify potential noise polygons in the data.
 Noise may be erroneous data sourced from the input bathymetry (such as speckled noise in marine lidar data or imagery), or superfluous rugose outcrops. To correct for these additional 'noise' areas, a 'noise ruggedness threshold' is used to identify areas of higher ruggedness, which are inferred areas of greater relief and therefore less likely to be noise in the data.
 </p>
-<p>With a user-defined 'noise' ruggedness threshold, processes are implemented to overlap the ‘ruggedness noise threshold’ (higher ruggedness value, e.g. 0.001) with the rugose outcrops defined in the surface elements classification (lower ruggedness value, e.g. 0.0002). Where rugose outcrops overlap with the ruggedness noise threshold, the preliminary landform labels are retained. Where they do not overlap, the polygons are labelled as 'noise'. These 'noise' polygons are to be manually reviewed by the user in later steps to ensure polygons are correctly attributed.
+<p>With a user-defined 'noise' ruggedness threshold, processes are implemented to overlap the Â‘ruggedness noise thresholdÂ’ (higher ruggedness value, e.g. 0.001) with the rugose outcrops defined in the surface elements classification (lower ruggedness value, e.g. 0.0002). Where rugose outcrops overlap with the ruggedness noise threshold, the preliminary landform labels are retained. Where they do not overlap, the polygons are labelled as 'noise'. These 'noise' polygons are to be manually reviewed by the user in later steps to ensure polygons are correctly attributed.
 </p>
 <p>A suitable 'noise' ruggedness threshold can be identified by interrogating the ruggedness layer, and selecting a value which, when overlapped with the ruggedness threshold for rugose outcrops, will retain the most appropriate extent of the rugose outcrop. An example is provided below in Figure 7.
 </p>
@@ -920,4 +920,5 @@ Description of routine.
 <p class="pad"></p>
 <div>
 </body>
+
 </html>
