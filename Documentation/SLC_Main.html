@@ -87,6 +87,8 @@
 
 <div class="sidenav">
 <a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Intro.html" style="font-size: 20px">Introduction</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_References.html" style="font-size: 20px">References</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Troubleshoot.html" style="font-size: 20px">Troubleshooting</a>
 <h2>Preparation Tools</h2>
 <a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Preparation.html#PREPclipDEM">PREP clip DEM</a>
 <a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Preparation.html#PREPfixDEM">PREP fix DEM NaN</a>
@@ -100,7 +102,6 @@
 <a href="#land05">LANDFORMS 05 plain landforms</a>
 <a href="#land06">LANDFORMS depth reclassification</a>
 <p style="padding-bottom: 6px;"></p>
-<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_References.html" style="font-size: 20px">References</a>
 <!--<li><a href="#RtnName">Routine Name</a></li>-->
 </div>
 <div class="main">
@@ -622,7 +623,7 @@ Seabed landforms are defined from the classified surface elements, where multipl
 <p>A user-defined 'noise' ruggedness threshold is used to identify potential noise polygons in the data.
 Noise may be erroneous data sourced from the input bathymetry (such as speckled noise in marine lidar data or imagery), or superfluous rugose outcrops. To correct for these additional 'noise' areas, a 'noise ruggedness threshold' is used to identify areas of higher ruggedness, which are inferred areas of greater relief and therefore less likely to be noise in the data.
 </p>
-<p>With a user-defined 'noise' ruggedness threshold, processes are implemented to overlap the Â‘ruggedness noise thresholdÂ’ (higher ruggedness value, e.g. 0.001) with the rugose outcrops defined in the surface elements classification (lower ruggedness value, e.g. 0.0002). Where rugose outcrops overlap with the ruggedness noise threshold, the preliminary landform labels are retained. Where they do not overlap, the polygons are labelled as 'noise'. These 'noise' polygons are to be manually reviewed by the user in later steps to ensure polygons are correctly attributed.
+<p>With a user-defined 'noise' ruggedness threshold, processes are implemented to overlap the ‘ruggedness noise threshold’ (higher ruggedness value, e.g. 0.001) with the rugose outcrops defined in the surface elements classification (lower ruggedness value, e.g. 0.0002). Where rugose outcrops overlap with the ruggedness noise threshold, the preliminary landform labels are retained. Where they do not overlap, the polygons are labelled as 'noise'. These 'noise' polygons are to be manually reviewed by the user in later steps to ensure polygons are correctly attributed.
 </p>
 <p>A suitable 'noise' ruggedness threshold can be identified by interrogating the ruggedness layer, and selecting a value which, when overlapped with the ruggedness threshold for rugose outcrops, will retain the most appropriate extent of the rugose outcrop. An example is provided below in Figure 7.
 </p>
@@ -920,5 +921,4 @@ Description of routine.
 <p class="pad"></p>
 <div>
 </body>
-
 </html>

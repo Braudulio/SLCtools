@@ -96,17 +96,17 @@
 <p style="padding-bottom: 6px;"></p>
 </div>
 <div class="main">
-<h1>References</h1>
-<ul style="list-style-type:none;">
-	<li>Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., and B&ouml;hner, J. (2015). System for Automated Geoscientific Analyses (SAGA) v. 2.1.4, Geosci. Model Dev., 8, 1991-2007, <a href="https://doi.org/10.5194/gmd-8-1991-2015" target="_blank">doi:10.5194/gmd-8-1991-2015</a>.</li>
-	<li>Dove, D., Nanson, R., Bjarnad&#243;ttir, L.R., Guinan, J., Gafeira, J., Post, A., Dolan, M.F.J., Stewart, H., Arosio, R. and Scott, G., 2020. A two-part seabed geomorphology classification scheme:(v. 2). Part 1: morphology features glossary.</li>
-	<li>Evans, J., Oakleaf, J., Cushman, S., 2014. An ArcGIS Toolbox for Surface Gradient and Geomorphometric Modeling, Version 2.0-0. Available online: <a href="https://github.com/jeffreyevans/GradientMetrics" target="_blank">https://github.com/jeffreyevans/GradientMetrics</a></li>
-	<li>GDAL/OGR contributors (2025). GDAL/OGR Geospatial Data Abstraction software Library. Open Source Geospatial Foundation. URL: <a href="https://gdal.org" target="_blank">https://gdal.org</a>, doi: 10.5281/zenodo.5884351.</li>
-	<li>International Hydrographic Organization (IHO), 2019. S-32 IHO - Hydrographic Dictionary Multilingual Reference for IHO Publications - Hydrographic Dictionary Working Group (HDWG). Available online: <a href="http://iho-ohi.net/S32/" target="_blank">http://iho-ohi.net/S32/</a></li>
-	<li>Lindsay, J.B. (2016). Whitebox GAT: A case study in geomorphometric analysis. Computers & Geosciences, 95, 75-84. <a href="http://dx.doi.org/10.1016/j.cageo.2016.07.003" target="_blank">http://dx.doi.org/10.1016/j.cageo.2016.07.003</a>.</li>
-	<li>Linklater, M., Ingleton, T. C., Kinsela, M. A., Morris, B. D., Allen, K. M., Sutherland, M. D., Hanslow, D. J. 2019. Techniques for classifying seabed morphology and composition on a subtropical-temperate continental shelf. Geosciences, 9(3), 141. <a href="https://doi.org/10.3390/geosciences9030141" target="_blank"> https://doi.org/10.3390/geosciences9030141</a></li>
-	<li>Linklater, M., Morris, B.D. and Hanslow, D.J. (2023) Classification of seabed landforms on continental and island shelves. Frontiers of Marine Science, 10, <a href="https://doi.org/10.3389/fmars.2023.1258556" target="_blank">https://doi.org/10.3389/fmars.2023.1258556</a>.</li>
-	<li>QGIS Development Team, 2025. QGIS Geographic Information System. Open Source Geospatial Foundation Project. <a href="http://qgis.org" target="_blank">http://qgis.org</a>.</li>
+<h1>Troubleshooting & Tips</h1>
+<br>
+<ul style="list-style-type:disc;">
+	<li>Make sure to save your QGIS project. The toolset will populate outputs in the directory of your saved GIS Project.
+	<li>Check plugins are installed for <b>SAGA</b> 'Processing Saga NextGen Provider' and <b>WhiteBoxTools</b> 'WhiteboxTools for QGIS'.
+	<li>Check 'No Data' value of Input DEM (Properties - Information – Bands: No Data value). If No Data value = 'nan', run the <em>PREP Fix DEM NaN</em> tool to change 'nan' to '-9999'. DEMs with 'nan' may result in errors, including outputs which may classify no data areas.
+	<li>Large and/or complex survey areas may perform slowly. Data may need to be segmented into smaller areas for processing. If segmenting a survey area, it is recommended to generate a buffer (e.g. 500 m) for each segment before processing, to ensure smoother joins between segments.
+	<li>If wanting to clip a smaller area of a DEM for processing, it is recommended to create a shapefile and extract the DEM raster from the shapefile mask. Exporting a reduced boundary area from the QGIS project frame may result in errors during subsequent processing.
+	<li>If getting errors regarding 'invalid geometry', use in-house QGIS tools to 'check validity' and 'fix geometries' to repair shapefile. Also check whether the NoData value is 'nan' and if so, use the <em>PREP Fix DEM NaN</em> tool to change 'nan' to '-9999'.
+	<li>It is recommended to have the QGIS Project and the shapefiles saved in the same coordinate reference system (CRS).
+	<li>It is recommended to save files to a new directory if re-processing files, rather than overwriting existing files.
 </ul>
 
 <p class="pad"></p>
