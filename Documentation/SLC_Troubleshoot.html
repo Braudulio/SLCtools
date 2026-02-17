@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+<head>
+<meta name="qrichtext" content="1">
+<style type="text/css">
+	body { font-family:'Calibri';
+	font-size:11pt;
+	font-weight:400;
+	font-style:normal;
+	width:75%;
+	}
+
+	h1 { color:#2E74B5;}
+	h2 { color:#2E74B5;}
+	h3 { color:#d55000;}
+
+	a { color:#005fce; text-decoration:none; }
+
+	.pad {
+	  padding-bottom: 6cm;
+	}
+
+	.title {
+	  height: 60px;
+	  width: 75%;
+	  text-align: center;
+	  background-color: #ffffff;
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	}
+
+	.sidenav {
+	  height: 100%;
+	  width: 180px;
+	  position: fixed;
+	  z-index: 1;
+	  top: 60px;
+	  left: 0;
+	  background-color: #ffffff;
+	  overflow-x: hidden;
+	  padding-top: 20px;
+	  margin-top: 0px;
+	}
+
+	.sidenav a {
+	  padding: 6px 8px 6px 16px;
+	  text-decoration: none;
+	  font-size: 18px;
+	  color: #005fce;
+	  display: block;
+	}
+
+	.sidenav a:hover {
+	  color: #8eb8fa;
+	}
+
+	.main {
+	  margin-left: 180px; /* Same as the width of the sidenav */
+	  font-size: 16px; /* Increased text to enable scrolling */
+	  padding: 60px 10px;
+	}
+	figure {
+	  text-align: center;
+	}
+
+	figcaption {
+	  text-align: center;
+	}
+	ul li {
+	  margin-bottom: 6px;
+	}
+</style>
+</head>
+<body>
+<div class="title">
+<h1 style="padding-top: 0px">Seabed Landforms Classification Toolset</h1>
+</div>
+
+<div class="sidenav">
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Intro.html" style="font-size: 20px">Introduction</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_References.html" style="font-size: 20px">References</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Troubleshoot.html" style="font-size: 20px">Troubleshooting</a>
+<h2>Preparation Tools</h2>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Preparation.html#PREPclipDEM">PREP clip DEM</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Preparation.html#PREPfixDEM">PREP fix DEM NaN</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Preparation.html#PREPmakeDEM">PREP make DEM from xyz</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Preparation.html#PREPsmoothDEM">PREP smooth DEM</a>
+<h2>Main Tools</h2>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land01">LANDFORMS 01 terrain variables</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land02">LANDFORMS 02 surface elements</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land03">LANDFORMS 03 prelim landforms</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land04">LANDFORMS 04 final landforms</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land05">LANDFORMS 05 plain landforms</a>
+<a href="https://html-preview.github.io/?url=https://github.com/Braudulio/SLCtools/blob/main/Documentation/SLC_Main.html#land06">LANDFORMS depth reclassification</a>
+<p style="padding-bottom: 6px;"></p>
+</div>
+<div class="main">
+<h1>Troubleshooting & Tips</h1>
+<br>
+<ul style="list-style-type:disc;">
+	<li>Make sure to save your QGIS project. The toolset will populate outputs in the directory of your saved GIS Project.
+	<li>Check plugins are installed for <b>SAGA</b> 'Processing Saga NextGen Provider' and <b>WhiteBoxTools</b> 'WhiteboxTools for QGIS'.
+	<li>Check 'No Data' value of Input DEM (Properties - Information – Bands: No Data value). If No Data value = 'nan', run the <em>PREP Fix DEM NaN</em> tool to change 'nan' to '-9999'. DEMs with 'nan' may result in errors, including outputs which may classify no data areas.
+	<li>Large and/or complex survey areas may perform slowly. Data may need to be segmented into smaller areas for processing. If segmenting a survey area, it is recommended to generate a buffer (e.g. 500 m) for each segment before processing, to ensure smoother joins between segments.
+	<li>If wanting to clip a smaller area of a DEM for processing, it is recommended to create a shapefile and extract the DEM raster from the shapefile mask. Exporting a reduced boundary area from the QGIS project frame may result in errors during subsequent processing.
+	<li>If getting errors regarding 'invalid geometry', use in-house QGIS tools to 'check validity' and 'fix geometries' to repair shapefile. Also check whether the NoData value is 'nan' and if so, use the <em>PREP Fix DEM NaN</em> tool to change 'nan' to '-9999'.
+	<li>It is recommended to have the QGIS Project and the shapefiles saved in the same coordinate reference system (CRS).
+	<li>It is recommended to save files to a new directory if re-processing files, rather than overwriting existing files.
+</ul>
+
+<p class="pad"></p>
+<p class="pad"></p>
+<div>
+</body>
+</html>
