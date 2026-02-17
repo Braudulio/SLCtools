@@ -101,7 +101,7 @@
 <ul style="list-style-type:disc;">
 	<li>Make sure to save your QGIS project. The toolset will populate outputs in the directory of your saved GIS Project.
 	<li>Check plugins are installed for <b>SAGA</b> 'Processing Saga NextGen Provider' and <b>WhiteBoxTools</b> 'WhiteboxTools for QGIS'.
-	<li>Check 'No Data' value of Input DEM (Properties - Information – Bands: No Data value). If No Data value = 'nan', run the <em>PREP Fix DEM NaN</em> tool to change 'nan' to '-9999'. DEMs with 'nan' may result in errors, including outputs which may classify no data areas.
+	<li>Check 'No Data' value of Input DEM (Properties - Information - Bands: No Data value). If No Data value = 'nan', run the <em>PREP Fix DEM NaN</em> tool to change 'nan' to '-9999'. DEMs with 'nan' may result in errors, including outputs which may classify no data areas.
 	<li>Large and/or complex survey areas may perform slowly. Data may need to be segmented into smaller areas for processing. If segmenting a survey area, it is recommended to generate a buffer (e.g. 500 m) for each segment before processing, to ensure smoother joins between segments.
 	<li>If wanting to clip a smaller area of a DEM for processing, it is recommended to create a shapefile and extract the DEM raster from the shapefile mask. Exporting a reduced boundary area from the QGIS project frame may result in errors during subsequent processing.
 	<li>If getting errors regarding 'invalid geometry', use in-house QGIS tools to 'check validity' and 'fix geometries' to repair shapefile. Also check whether the NoData value is 'nan' and if so, use the <em>PREP Fix DEM NaN</em> tool to change 'nan' to '-9999'.
@@ -113,4 +113,5 @@
 <p class="pad"></p>
 <div>
 </body>
+
 </html>
