@@ -125,7 +125,7 @@ This tool generates the four key variables required to perform the surface eleme
 <p>Input raster dataset (DEM) as a GeoTIFF.</p>
 
 <h3>Region Label</h3>
-<p>Name for output directory (TERRAIN_[<em>Region Label</em>]) that results will be transfered to <em>i.e. test</em>, that is created if necessary. All transfered results are also renamed with this label as a prefix <em>i.e. test_slope.tif</em>.
+<p>Name for output directory (01_TERRAIN_[<em>Region Label</em>]) that results will be transfered to <em>i.e. test</em>, that is created if necessary. All transfered results are also renamed with this label as a prefix <em>i.e. test_slope.tif</em>.
 </p>
 
 <h3>BroadBPI Window Size</h3>
@@ -147,7 +147,7 @@ This tool generates the four key variables required to perform the surface eleme
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
 <h2>Outputs</h2>
-<p>Outputs GeoTIFF rasters to <em>../Working/</em> for slope, vrm, broadbpi and finebpi which are subsequently renamed and transfered to the TERRAIN_[<em>Region Label</em>] directory.
+<p>Outputs GeoTIFF rasters to <em>../Working/</em> for slope, vrm, broadbpi and finebpi which are subsequently renamed and transfered to the 01_TERRAIN_[<em>Region Label</em>] directory.
 </p>
 
 <!--
@@ -181,7 +181,7 @@ The surface elements classification breaks up the surface into key components ba
 <p>The 11 'surface element' classes are then aggregated into 7 classes to create a 'summarised surface elements' layer, which offers a simplified layer for users to interpret features. For example, the 'Broadscale high Rugose' would be aggregated with other rugose 'high' classes to form 'Rugose outcrops'. The 'summarised surface element' labels are defined in the output 'SUM_SE' field.
 </p>
 
-<p>The results of the tool are renamed and transferred to the SURFEL_[<em>Region Label</em>] directory.
+<p>The results of the tool are renamed and transferred to the 02_SURFEL_[<em>Region Label</em>] directory.
 </p>
 
 <!--
@@ -302,7 +302,7 @@ The surface elements classification breaks up the surface into key components ba
 <p>Input raster dataset (DEM) as a GeoTIFF</p>
 
 <h3>Region Label</h3>
-<p>Name for output directory (SURFEL_[<em>Region Label</em>]) that results will be transfered to <em>i.e. test</em>, that is created if necessary. All transfered results are also renamed with this label as a prefix <em>i.e. test_surf_elem.shp</em>.
+<p>Name for output directory (02_SURFEL_[<em>Region Label</em>]) that results will be transfered to <em>i.e. test</em>, that is created if necessary. All transfered results are also renamed with this label as a prefix <em>i.e. test_surf_elem.shp</em>.
 </p>
 
 <h3>Slope Threshold</h3>
@@ -429,11 +429,11 @@ The surface elements classification breaks up the surface into key components ba
 
 <h2>Outputs</h2>
 <h3>Surface Elements</h3>
-<p>A shapefile (surf_elem.shp) containing the surface elements classification is created in <em>../Working/</em> and subsequently renamed and transfered to the SURFEL_[<em>Region Label</em>] directory.
+<p>A shapefile (surf_elem.shp) containing the surface elements classification is created in <em>../Working/</em> and subsequently renamed and transfered to the 02_SURFEL_[<em>Region Label</em>] directory.
 </p>
 
 <h3>Auxillary Outputs</h3>
-<p>Also outputs GeoTIFF rasters to <em>../Working/</em> for slope, vrm, broadbpi and finebpi. These are then renamed and transfered to the SURFEL_[<em>Region Label</em>] directory along with their reclassified shapefiles.
+<p>Also outputs GeoTIFF rasters to <em>../Working/</em> for slope, vrm, broadbpi and finebpi. These are then renamed and transfered to the 02_SURFEL_[<em>Region Label</em>] directory along with their reclassified shapefiles.
 </p>
 
 <!--
@@ -616,7 +616,7 @@ Seabed landforms are defined from the classified surface elements, where multipl
 <p>Input raster dataset (DEM) as a GeoTIFF</p>
 
 <h3>Region Label</h3>
-<p>Name for output directory (PRELIM_[<em>Region Label</em>]) that results will be transfered to <em>i.e. test</em>, that is created if necessary. All transfered results are also renamed with this label as a prefix <em>i.e. test_prelim_landforms.shp</em>.
+<p>Name for output directory (03_PRELIM_[<em>Region Label</em>]) that results will be transfered to <em>i.e. test</em>, that is created if necessary. All transfered results are also renamed with this label as a prefix <em>i.e. test_prelim_landforms.shp</em>.
 </p>
 
 <h3>Ruggedness Threshold</h3>
@@ -641,10 +641,10 @@ Noise may be erroneous data sourced from the input bathymetry (such as speckled 
 
 <h2>Outputs</h2>
 <h3>Preliminary Landforms</h3>
-<p>A shapefile (prelim_landforms.shp) containing the preliminary landforms classification is created in <em>../Working/</em> and subsequently renamed and transfered to the PRELIM_[<em>Region Label</em>] directory.
+<p>A shapefile (prelim_landforms.shp) containing the preliminary landforms classification is created in <em>../Working/</em> and subsequently renamed and transferred to the 03_PRELIM_[<em>Region Label</em>] directory.
 
 <h3>Auxillary Outputs</h3>
-<p>Also outputs 'Intermediate' files to the PRELIM_[<em>Region Label</em>] directory:
+<p>Also outputs 'Intermediate' files to the 03_PRELIM_[<em>Region Label</em>] directory:
 </p>
 <ul>
 	<li>study_area_Er_all_rug_classes.shp - shapefile containing the buffered study area with all rugose classes erased (including 'Depressions and channels - Rugose'). This layer is used to identify polygons within reef outcrops.</li>
@@ -677,7 +677,7 @@ This tool finalises the preliminary landforms into the final landform classifica
 </p>
 <p>This tool has optional functionality to eliminate small polygons, with a user-defined polygon area.
 </p>
-<p>The results of the tool are renamed and transferred to the directory LANDFORM_[<em>Region Label</em>].
+<p>The results of the tool are renamed and transferred to the directory 04_LANDFORM_[<em>Region Label</em>].
 </p>
 <!--The preliminary landforms shapefile input by the user is also transferred to the LANDFORM_[<em>Region Label</em>] directory.-->
 
@@ -736,11 +736,11 @@ This tool finalises the preliminary landforms into the final landform classifica
 
 <h2>Input parameters</h2>
 <h3>Preliminary Landforms (shapefile)</h3>
-<p>Premlinary landforms shapefile (<em>e.g.</em>prelim_landforms.shp), generated by the <a href="#land03">LANDFORMS 03 prelim landforms</a> tool and stored in ../PRELIM_[<em>Region Label</em>] directory.
+<p>Premlinary landforms shapefile (<em>e.g.</em>prelim_landforms.shp), generated by the <a href="#land03">LANDFORMS 03 prelim landforms</a> tool and stored in ../03_PRELIM_[<em>Region Label</em>] directory.
 </p>
 
 <h3>Region Label</h3>
-<p>Name for output directory (LANDFORM_[Region Label]) that results will be transfered to <em>i.e. test</em>, that is created if necessary. All transfered results are also renamed with this label as a prefix <em>i.e. test_final_landforms.shp</em>.
+<p>Name for output directory (04_LANDFORM_[Region Label]) that results will be transfered to <em>i.e. test</em>, that is created if necessary. All transfered results are also renamed with this label as a prefix <em>i.e. test_final_landforms.shp</em>.
 </p>
 
 <h3>Do noise removal iterations</h3>
@@ -751,7 +751,7 @@ This tool finalises the preliminary landforms into the final landform classifica
 
 <h2>Output</h2>
 <h3>Final Landforms</h3>
-<p>A shapefile (<em>final_landforms.shp</em>) containing the final landforms classification is created in <em>../Working/</em> and subsequently renamed and transfered to the LANDFORM_[<em>Region Label</em>] directory.
+<p>A shapefile (<em>final_landforms.shp</em>) containing the final landforms classification is created in <em>../Working/</em> and subsequently renamed and transfered to the 04_LANDFORM_[<em>Region Label</em>] directory.
 
 <br>
 <p align="right">Algorithm version: V1.1</p>
@@ -781,7 +781,7 @@ Plain landforms are defined using finescale and broadscale BPI, creating classes
 </p>
 <p>Individual datasets should be interrogated to determine the most suitable threshold settings.
 </p>
-<p>The results of the tool are renamed and transfered to the directory PLAIN_[<em>Region Label</em>].
+<p>The results of the tool are renamed and transfered to the directory 05_PLAIN_[<em>Region Label</em>].
 </p>
 
 <h2>Input parameters</h2>
@@ -793,7 +793,7 @@ Plain landforms are defined using finescale and broadscale BPI, creating classes
 </p>
 
 <h3>Region Label</h3>
-<p>Name for output directory (PLAIN_[Region Label]) that results will be transferred to <em>i.e. test</em>, that is created if necessary. All transferred results are also renamed with this label as a prefix <em>i.e. test_surf_elem_plain.shp</em>.
+<p>Name for output directory (05_PLAIN_[Region Label]) that results will be transferred to <em>i.e. test</em>, that is created if necessary. All transferred results are also renamed with this label as a prefix <em>i.e. test_surf_elem_plain.shp</em>.
 </p>
 
 <h3>BroadBPI Thresholds</h3>
@@ -854,11 +854,11 @@ BPI is calculated using the methodology from the 'Slope Position' tool in the Ge
 
 <h2>Output</h2>
 <h3>Plain Landforms</h3>
-<p>A shapefile (surf_elem_plain.shp) containing the plain landforms classification is created in <em>../Working/</em> and subsequently renamed and transfered to the PLAIN_[<em>Region Label</em>] directory.
+<p>A shapefile (surf_elem_plain.shp) containing the plain landforms classification is created in <em>../Working/</em> and subsequently renamed and transfered to the 05_PLAIN_[<em>Region Label</em>] directory.
 </p>
 
 <h3>Auxillary Outputs</h3>
-<p>Also outputs GeoTIFF rasters to <em>../Working/</em> for broadbpi and finebpi. If the <em>Final Landforms</em> shapefile was used then the 'plain_dem' raster is also output. These are then renamed and transfered to the PLAIN_[<em>Region Label</em>] directory along with the plains landform classification.
+<p>Also outputs GeoTIFF rasters to <em>../Working/</em> for broadbpi and finebpi. If the <em>Final Landforms</em> shapefile was used then the 'plain_dem' raster is also output. These are then renamed and transfered to the 05_PLAIN_[<em>Region Label</em>] directory along with the plains landform classification.
 </p>
 
 <!--
@@ -886,18 +886,18 @@ Depth reclassification tool that generates polygons at depth intervals specified
 <p>Depth interval (m) to be used to generate polygons.</p>
 
 <h3>DEM Label</h3>
-<p>Label for output directory <em>i.e.</em> PREP_[DEM Label].
+<p>Label for output directory <em>i.e.</em> 00_PREP_[DEM Label].
 </p>
 <p>If left blank reclassified the depth shapefile (DEM_depth_reclass.shp) is output to <em>../Working/</em> directory.
 </p>
 
 <h2>Outputs</h2>
-<p>A reclassified depth shapefile named <em>DEM_[DEM_label]_depth_reclass.shp</em> is output to PREP_[DEM Label].</p>
+<p>A reclassified depth shapefile named <em>DEM_[DEM_label]_depth_reclass.shp</em> is output to 00_PREP_[DEM Label].</p>
 <p>If <em>DEM Label</em> is left blank the reclassified depth shapefile (DEM_depth_reclass.shp) is output to <em>../Working/</em> directory.
 
 <br>
-<p align="right">Algorithm version: V1.1</p>
-<p align="right">Last Modified: 25-Nov-2025</p>
+<p align="right">Algorithm version: V1.2</p>
+<p align="right">Last Modified: 26-Mar-2026</p>
 
 <!--
 <h1 id="RtnName">Routine Name</h1>
